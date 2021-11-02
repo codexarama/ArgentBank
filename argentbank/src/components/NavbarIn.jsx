@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../img/argentBankLogo.png'
+import logo from '../img/argentBankLogo.png';
 
-export default function Navbar() {
+export default function NavbarIn() {
   return (
     <nav className="main-nav">
       <Link className="main-nav-logo" to="/">
@@ -13,12 +13,10 @@ export default function Navbar() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <div>
-        <Link className="main-nav-item" to="/sign-in">
-          <i className="fa fa-user-circle"></i>
-          Sign In
-        </Link>
-      </div>
+      <Link className="main-nav-item" to="/login">
+        <i className="fa fa-user-circle sign-in-icon"></i>
+        <span>Sign In</span>
+      </Link>
     </nav>
   );
 }
