@@ -11,7 +11,7 @@ export default function SignIn() {
         <section className="sign-in-content">
           <i className="fa fa-user-circle sign-in-icon"></i>
           <h1>Sign In</h1>
-          <htmlForm>
+          <form>
             <div className="input-wrapper">
               <label htmlFor="username">Username</label>
               <input type="text" id="username" />
@@ -27,7 +27,7 @@ export default function SignIn() {
             <Link to="/profile" className="sign-in-button">
               <button className="sign-in-button">Sign In</button>
             </Link>
-          </htmlForm>
+          </form>
         </section>
       </main>
     </>
