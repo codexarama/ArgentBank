@@ -4,7 +4,7 @@ import security from '../img/icon-security.png';
 
 export const homeData = [
     {
-      id: '1',
+      id: 1,
       icon: chat,
       alt: 'chat icon',
       title: 'You are our #1 priority',
@@ -12,7 +12,7 @@ export const homeData = [
         'Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes.',
     },
     {
-      id: '2',
+      id: 2,
       icon: money,
       alt: 'money icon',
       title: 'More savings means higher rates',
@@ -20,7 +20,7 @@ export const homeData = [
         'The more you save with us, the higher your interest rate will be!',
     },
     {
-      id: '3',
+      id: 3,
       icon: security,
       alt: 'security icon',
       title: 'Security you can trust',
