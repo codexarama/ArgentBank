@@ -1,6 +1,6 @@
 import React from 'react';
 import { userData } from '../services/userData';
-import { profileData } from '../services/data';
+import { accountData } from '../services/data';
 
 import Account from '../components/Account';
 
@@ -10,12 +10,11 @@ import Welcome from '../components/Welcome';
 export default function Profile() {
   return (
     <>
-      <NavbarOut />
+      <NavbarOut name={userData.firstName} />
       <main className="profile bg-dark">
-        {/* <Welcome fullName={userData.firstName + ' ' + userData.lastName}/> */}
         <Welcome fullName={userData.firstName.concat(' ', userData.lastName)} />
         <h2 className="sr-only">Accounts</h2>
-        {profileData.map((item) => (
+        {accountData.map((item) => (
           <Account
             key={item.id}
             title={item.title}

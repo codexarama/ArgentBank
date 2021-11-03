@@ -1,5 +1,5 @@
 import React from 'react';
-import { homeData } from '../services/data';
+import { featureData } from '../services/data';
 
 import NavbarIn from '../components/NavbarIn';
 import Hero from '../components/Hero';
@@ -11,7 +11,7 @@ export default function Home() {
       <NavbarIn />
       <Hero />
       <main className="main">
-        {homeData.map((item) => (
+        {featureData.map((item) => (
           <Feature
             key={item.id}
             src={item.icon}

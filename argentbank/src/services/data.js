@@ -2,7 +2,7 @@ import chat from '../img/icon-chat.png';
 import money from '../img/icon-money.png';
 import security from '../img/icon-security.png';
 
-export const homeData = [
+export const featureData = [
     {
       id: 1,
       icon: chat,
@@ -29,7 +29,7 @@ export const homeData = [
     },
   ];
 
-export const profileData = [
+export const accountData = [
   {
     id: 1,
     title: 'Argent Bank Checking (x8349)',
