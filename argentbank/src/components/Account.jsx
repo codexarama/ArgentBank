@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 
 export default function Account({title, amount, description}) {
     return (
@@ -14,3 +15,13 @@ export default function Account({title, amount, description}) {
       </section>
     )
 }
+
+/**
+ * Account PROPTYPES
+ */
+
+ Account.propTypes = {
+  title: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};

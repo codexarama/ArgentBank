@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 export default function Feature({ src, alt, title, paragraph }) {
   return (
@@ -12,3 +13,14 @@ export default function Feature({ src, alt, title, paragraph }) {
     </section>
   );
 }
+
+/**
+ * Feature PROPTYPES
+ */
+
+ Feature.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
