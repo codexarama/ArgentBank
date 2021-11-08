@@ -226,6 +226,10 @@ body {
   font-size: 1.2rem;
 }
 
+.input-error {
+  color : #ed6454
+}
+
 .footer {
   flex-shrink: 0;
   position: fixed;

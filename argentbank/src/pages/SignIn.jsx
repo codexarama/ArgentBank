@@ -1,37 +1,15 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 import NavbarIn from '../components/NavbarIn';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleLogin = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const emailError = document.querySelector('.email.error-input');
-    const passwordError = document.querySelector('.password.error-input');
-
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/api/v1/user/login',
-      // url: `${process.env.REACT_APP_API_URL}login`,
-      withCredentials: true,
-      data: {
-        email,
-        password,
-      },
-    })
-      .then((result) => {
-        console.log(result);
-        if (result.data.error) {
-          emailError.innerHTML = result.data.error.email;
-          passwordError.innerHTML = result.data.error.password;
-        } else {
-          window.location = '/profile';
-        }
-      })
-      .catch((error) => console.log(error));
+    setSubmitted(true);
   };
 
   return (
@@ -41,7 +19,7 @@ export default function SignIn() {
         <section className="sign-in-content">
           <i className="fa fa-user-circle sign-in-icon"></i>
           <h1>Sign In</h1>
-          <form action="" onSubmit={handleLogin} id="sign-in-form">
+          <form action="" onSubmit={handleSubmit} id="sign-in-form">
             <div className="input-wrapper">
               <label htmlFor="username">Username</label>
               <input
@@ -51,8 +29,7 @@ export default function SignIn() {
                 onChange={(event) => setEmail(event.target.value)}
                 value={email}
               />
-              <div className="email error-input"></div>
-              {/* <div className="email error">Unknown user</div> */}
+              {submitted && !email && <div className="input-error">Username is required</div>}
             </div>
             <div className="input-wrapper">
               <label htmlFor="password">Password</label>
@@ -63,8 +40,7 @@ export default function SignIn() {
                 onChange={(event) => setPassword(event.target.value)}
                 value={password}
               />
-              <div className="password error-input"></div>
-              {/* <div className="password error">Wrong password</div> */}
+              {submitted && !password && <div className="input-error">Password is required</div>}
             </div>
             <div className="input-remember">
               <input type="checkbox" id="remember-me" />
