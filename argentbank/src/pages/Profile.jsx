@@ -1,5 +1,5 @@
 import React from 'react';
-import { userData } from '../services/userData';
+import { userData } from '../services/mockedData';
 import { accountData } from '../services/data';
 
 import Account from '../components/Account';
