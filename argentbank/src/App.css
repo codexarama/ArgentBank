@@ -1,3 +1,4 @@
+/* BASIS */
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6,21 +7,32 @@ html {
   color: #2c3e50;
 }
 
+/* BODY */
 body {
+  min-height: 100vh;
   margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
+/* MAIN */
 .main {
+  display: flex;
+  flex-direction: row;
   flex: 1;
+  margin: auto;
+  /* flex-wrap: wrap; */
 }
 
 .bg-dark {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 87.5vh;
   background-color: #12002b;
 }
 
+/* masquage accessible */
 .sr-only {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
@@ -35,6 +47,7 @@ body {
   white-space: nowrap !important; /* 3 */
 }
 
+/* NAVBAR */
 .main-nav {
   display: flex;
   justify-content: space-between;
@@ -44,6 +57,7 @@ body {
 
 .main-nav a {
   font-weight: bold;
+  text-decoration: none;
   color: #2c3e50;
 }
 
@@ -52,12 +66,18 @@ body {
 }
 
 .main-nav-item {
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  margin-right: 0.5rem;
 }
 
-.main-nav-item:hover {
+/* .main-nav-item:hover {
   text-decoration: underline;
+} */
+
+.main-nav-item:nth-of-type(2) {
+  margin-left: 2rem;
+  margin-right: 1rem;
 }
 
 .main-nav-logo {
@@ -70,6 +90,7 @@ body {
   width: 200px;
 }
 
+/* HOME PAGE */
 .hero {
   background-image: url('./img/bank-tree.jpeg');
   background-position: 0 -50px;
@@ -126,6 +147,7 @@ body {
 .features {
   display: flex;
   flex-direction: column;
+  width: 33%;
 }
 
 @media (min-width: 920px) {
@@ -153,6 +175,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* SIGN IN PAGE */
 .sign-in-button {
   display: block;
   width: 100%;
@@ -170,12 +193,13 @@ body {
   background-color: white;
   width: 300px;
   margin: 0 auto;
-  margin-top: 3rem;
   padding: 2rem;
 }
 
-.sign-in-icon {
-  font-size: 5rem;
+.sign-in-icon,
+.sign-out-icon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
 }
 
 .input-remember {
@@ -202,9 +226,18 @@ body {
   font-size: 1.2rem;
 }
 
+.input-error {
+  color : #ed6454
+}
+
 .footer {
+  flex-shrink: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
+  background: #FFF;
   border-top: 2px solid #ccc;
   padding: 2rem 0 1.5rem;
 }
@@ -212,6 +245,17 @@ body {
 .footer-text {
   margin: 0;
   padding: 0;
+}
+
+/* PROFILE PAGE */
+.header {
+  width: 100%;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.profile {
+  flex-direction: column;
 }
 
 .account {
@@ -259,11 +303,6 @@ body {
   padding: 10px;
 }
 
-.header {
-  color: #fff;
-  margin-bottom: 2rem;
-}
-
 .transaction-button {
   display: block;
   width: 100%;
@@ -288,4 +327,12 @@ body {
   .transaction-button {
     width: 200px;
   }
+}
+
+/* ERROR PAGE */
+.error-msg {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

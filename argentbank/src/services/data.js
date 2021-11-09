@@ -2,9 +2,9 @@ import chat from '../img/icon-chat.png';
 import money from '../img/icon-money.png';
 import security from '../img/icon-security.png';
 
-export const homeData = [
+export const featureData = [
     {
-      id: '1',
+      id: 1,
       icon: chat,
       alt: 'chat icon',
       title: 'You are our #1 priority',
@@ -12,7 +12,7 @@ export const homeData = [
         'Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes.',
     },
     {
-      id: '2',
+      id: 2,
       icon: money,
       alt: 'money icon',
       title: 'More savings means higher rates',
@@ -20,7 +20,7 @@ export const homeData = [
         'The more you save with us, the higher your interest rate will be!',
     },
     {
-      id: '3',
+      id: 3,
       icon: security,
       alt: 'security icon',
       title: 'Security you can trust',
@@ -29,3 +29,27 @@ export const homeData = [
     },
   ];
 
+export const accountData = [
+  {
+    id: 1,
+    title: 'Argent Bank Checking (x8349)',
+    amount:
+      '$2,082.79',
+    description:'Available Balance'
+  },
+  {
+    id: 2,
+    title: 'Argent Bank Savings (x6712)',
+    amount:
+      '$10,928.42',
+    description:'Available Balance'
+  },
+  {
+    id: 3,
+    title: 'Argent Bank Credit Card (x8349)',
+    amount:
+      '$184.30',
+    description:'Current Balance'
+  },
+
+]

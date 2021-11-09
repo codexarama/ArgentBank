@@ -1,17 +1,26 @@
 import React from 'react';
-import { homeData } from '../services/data';
+import PropTypes from "prop-types";
 
-export default function Feature() {
+export default function Feature({ src, alt, title, paragraph }) {
   return (
     <section className="features">
       <h2 className="sr-only">Features</h2>
-      {homeData.map((item) => (
-        <div key={item.id} className="feature-item">
-          <img src={item.icon} alt={item.alt} className="feature-icon"/>
-          <h3>{item.title}</h3>
-          <p>{item.paragraph}</p>
-        </div>
-      ))}
+      <div className="feature-item">
+        <img src={src} alt={alt} className="feature-icon" />
+        <h3>{title}</h3>
+        <p>{paragraph}</p>
+      </div>
     </section>
   );
 }
+
+/**
+ * Feature PROPTYPES
+ */
+
+ Feature.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
