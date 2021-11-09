@@ -29,7 +29,7 @@ export default function SignIn() {
                 onChange={(event) => setEmail(event.target.value)}
                 value={email}
               />
-              {submitted && !email && <div className="input-error">Username is required</div>}
+              {submitted && !email && <small className="input-error">Username is required</small>}
             </div>
             <div className="input-wrapper">
               <label htmlFor="password">Password</label>
@@ -40,7 +40,7 @@ export default function SignIn() {
                 onChange={(event) => setPassword(event.target.value)}
                 value={password}
               />
-              {submitted && !password && <div className="input-error">Password is required</div>}
+              {submitted && !password && <small className="input-error">Password is required</small>}
             </div>
             <div className="input-remember">
               <input type="checkbox" id="remember-me" />
