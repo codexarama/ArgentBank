@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import SignIn from './pages/SignIn';
+import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Footer from './components/Footer';
 import './App.css';
@@ -10,7 +10,7 @@ export default function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/login" component={SignIn} />
+        <Route path="/login" component={Login} />
         <Route path="/profile" component={Profile} />
         <Route
           path="*"
