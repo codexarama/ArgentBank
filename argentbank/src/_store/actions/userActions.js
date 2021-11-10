@@ -67,7 +67,8 @@ export const logoutUser = () => {
     dispatch(logout());
     removeValueFromLocalStorage('TOKEN');
     removeValueFromLocalStorage('USER');
-    window.location.replace(`/login`);
+    window.location.replace(`/`);
+    // window.location.replace(`/login`);
   };
 };
 
