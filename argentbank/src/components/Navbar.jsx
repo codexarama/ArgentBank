@@ -1,10 +1,10 @@
 import React from 'react';
 
-import logo from '../img/argentBankLogo.png';
+import logo from '../assets/argentBankLogo.png';
 import { Link } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../_store/actions/userActions';
+import { logoutUser } from '../_store/actions/authActions';
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -33,8 +33,12 @@ export default function Navbar() {
           </Link>
           <Link
             className="main-nav-item"
+            // Failed prop type: The prop `to` is marked as required in `Link`, but its value is `undefined
             // EMPECHER LE RECHARGEMENT DE LA PAGE : NE FONCTIONNE PAS
-            onClick={(event) => {event.preventDefault(); dispatch(logoutUser())}}
+            onClick={(event) => {
+              event.preventDefault();
+              dispatch(logoutUser());
+            }}
           >
             <i className="fa fa-sign-out sign-out-icon"></i>
             <span>Sign Out</span>
