@@ -12,7 +12,7 @@ import axios from 'axios';
  * @param   {string}  email     [user email]
  * @param   {string}  password  [user password]
  *
- * @return  {object}            [token, user full name, errors]
+ * @return  {object}            [token, user first name, errors]
  */
 export const login = ({ email, password }) => {
   return (dispatch) => {
@@ -21,30 +21,17 @@ export const login = ({ email, password }) => {
         email,
         password,
       })
-      .then((result) => {
-        dispatch(loginSuccess(result.data.body));
-        setValueToLocalStorage('TOKEN', result.data.body.token);
-
-        // setValueToLocalStorage('USER', result = {
-        //   firstName: result.data.body.user.firstName,
-        //   lastName: result.data.body.user.lastName,
-        // });
-
-        // ok
-        setValueToLocalStorage('USER', result.data.body.user.firstName);
-        // setValueToLocalStorage('USER', result.data.body.user.firstName + " " + result.data.body.user.lastName);
+      .then((response) => {
+        dispatch(loginSuccess(response.data.body));
+        setValueToLocalStorage('TOKEN', response.data.body.token);
+        setValueToLocalStorage('USER', response.data.body.user.firstName);
         window.location.replace(`/profile`);
       })
       .catch((error) => {
-        dispatch(loginFailure(error.message));
+        dispatch(loginFailure(error.message)); 
       });
   };
 };
-
-// const loginSuccess = (firstName, lastName) => ({
-//   type: LOGIN_SUCCESS,
-//   payload: { firstName, lastName },
-// });
 
 const loginSuccess = (user) => ({
   type: LOGIN_SUCCESS,
@@ -61,7 +48,7 @@ const loginFailure = (error) => ({
 /**
  * LOGOUT ACTION
  *
- * @return  {function}  [remove data, redirect to login fom]
+ * @return  {function}  [remove data, redirect to home page]
  */
 export const logoutUser = () => {
   return (dispatch) => {
@@ -69,7 +56,6 @@ export const logoutUser = () => {
     removeValueFromLocalStorage('TOKEN');
     removeValueFromLocalStorage('USER');
     window.location.replace(`/`);
-    // window.location.replace(`/login`);
   };
 };
 

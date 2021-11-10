@@ -1,6 +1,6 @@
-import chat from '../img/icon-chat.png';
-import money from '../img/icon-money.png';
-import security from '../img/icon-security.png';
+import chat from '../assets/icon-chat.png';
+import money from '../assets/icon-money.png';
+import security from '../assets/icon-security.png';
 
 export const featureData = [
     {
