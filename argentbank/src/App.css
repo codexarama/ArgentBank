@@ -68,7 +68,9 @@ body {
 .main-nav-item {
   display: flex;
   align-items: center;
+  cursor: pointer;
   text-decoration: none;
+  font-weight: 700;
 }
 
 /* .main-nav-item:hover {
