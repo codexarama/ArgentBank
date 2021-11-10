@@ -10,12 +10,6 @@ export const authReducer = (state = initialstate, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-
-        // user: {
-        //   firstName: action.payload.firstName,
-        //   lastName: action.payload.lastName,
-        // },
-
         user: action.payload.user,
         isAuth: true,
       };
