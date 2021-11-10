@@ -5,6 +5,14 @@ import {
 
 import axios from 'axios';
 
+/**
+ * LOGIN ACTION
+ *
+ * @param   {string}  email     [user email]
+ * @param   {string}  password  [user password]
+ *
+ * @return  {object}            [token, user full name, errors]
+ */
 export const login = ({ email, password }) => {
   return (dispatch) => {
     axios
