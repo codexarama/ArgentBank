@@ -22,5 +22,5 @@ export default function Feature({ src, alt, title, paragraph }) {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  paragraph: PropTypes.string.isRequired,
 };

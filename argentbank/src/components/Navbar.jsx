@@ -1,13 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import logo from '../img/argentBankLogo.png';
+import { Link } from 'react-router-dom';
+
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '../_store/actions/userActions';
 
 export default function Navbar() {
-  // VERIFIER
-  // RESSOURCE : https://blogs.infinitesquare.com/posts/web/les-hooks-suite-et-fin-ce-que-font-les-librairies-populaires-de-react
-  const connected = useSelector((state) => state.user.connected);
+  const dispatch = useDispatch();
+  const user = localStorage.getItem('USER');
 
   return (
     <nav className="main-nav">
@@ -19,7 +20,7 @@ export default function Navbar() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      {!connected ? (
+      {!user ? (
         <Link className="main-nav-item" to="/login">
           <i className="fa fa-user-circle sign-in-icon"></i>
           <span>Sign In</span>
@@ -28,10 +29,13 @@ export default function Navbar() {
         <div className="main-nav-item">
           <Link className="main-nav-item" to="/profile">
             <i className="fa fa-user-circle sign-in-icon"></i>
-            {/* VERIFIER */}
-            {connected.firstName}
+            {user}
           </Link>
-          <Link className="main-nav-item" to="/">
+          <Link
+            className="main-nav-item"
+            // EMPECHER LE RECHARGEMENT DE LA PAGE : NE FONCTIONNE PAS
+            onClick={(event) => {event.preventDefault(); dispatch(logoutUser())}}
+          >
             <i className="fa fa-sign-out sign-out-icon"></i>
             <span>Sign Out</span>
           </Link>
