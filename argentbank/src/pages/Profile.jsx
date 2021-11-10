@@ -1,14 +1,16 @@
 import React from 'react';
-import { userData } from '../services/mockedData';
-import { accountData } from '../services/data';
 
-import Account from '../components/Account';
 import Welcome from '../components/Welcome';
 
+import { accountData } from '../services/data';
+import Account from '../components/Account';
+
 export default function Profile() {
+  const user = localStorage.getItem('USER');
+
   return (
       <main className="profile bg-dark">
-        <Welcome fullName={userData.firstName.concat(' ', userData.lastName)} />
+        <Welcome fullName={user} />
         <h2 className="sr-only">Accounts</h2>
         {accountData.map((item) => (
           <Account

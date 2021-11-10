@@ -31,7 +31,8 @@ export const login = ({ email, password }) => {
         // });
 
         // ok
-        setValueToLocalStorage('USER', result.data.body.user.firstName + " " + result.data.body.user.lastName);
+        setValueToLocalStorage('USER', result.data.body.user.firstName);
+        // setValueToLocalStorage('USER', result.data.body.user.firstName + " " + result.data.body.user.lastName);
         window.location.replace(`/profile`);
       })
       .catch((error) => {
