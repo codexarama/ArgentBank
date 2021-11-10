@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/types';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions/types';
 
 const initialstate = {
   user: null,
@@ -10,7 +10,7 @@ export const authReducer = (state = initialstate, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        
+
         // user: {
         //   firstName: action.payload.firstName,
         //   lastName: action.payload.lastName,
@@ -24,6 +24,12 @@ export const authReducer = (state = initialstate, action) => {
         ...state,
         user: null,
         error: action.payload.error,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        user: null,
+        isAuth: false,
       };
     default:
       return state;
