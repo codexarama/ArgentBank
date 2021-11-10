@@ -26,14 +26,15 @@ export default function Navbar() {
           <span>Sign In</span>
         </Link>
       ) : (
-        <div className="main-nav-item">
-          <Link className="main-nav-item" to="/profile">
+        <ul className="main-nav-item">
+          <li className="main-nav-item"
+          // AJOUTER onclick = edit => user profile
+           >
             <i className="fa fa-user-circle sign-in-icon"></i>
             {user}
-          </Link>
-          <Link
+          </li>
+          <li
             className="main-nav-item"
-            // Failed prop type: The prop `to` is marked as required in `Link`, but its value is `undefined
             // EMPECHER LE RECHARGEMENT DE LA PAGE : NE FONCTIONNE PAS
             onClick={(event) => {
               event.preventDefault();
@@ -42,8 +43,8 @@ export default function Navbar() {
           >
             <i className="fa fa-sign-out sign-out-icon"></i>
             <span>Sign Out</span>
-          </Link>
-        </div>
+          </li>
+        </ul>
       )}
     </nav>
   );
