@@ -1,6 +1,7 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from './types';
 import {
   setValueToLocalStorage,
+  removeValueFromLocalStorage,
 } from '../../utils/localStorage';
 
 import axios from 'axios';
@@ -54,4 +55,22 @@ const loginFailure = (error) => ({
   payload: {
     error,
   },
+});
+
+/**
+ * LOGOUT ACTION
+ *
+ * @return  {function}  [remove data, redirect to login fom]
+ */
+export const logoutUser = () => {
+  return (dispatch) => {
+    dispatch(logout());
+    removeValueFromLocalStorage('TOKEN');
+    removeValueFromLocalStorage('USER');
+    window.location.replace(`/login`);
+  };
+};
+
+const logout = () => ({
+  type: LOGOUT,
 });
