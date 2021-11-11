@@ -4,7 +4,7 @@ import logo from '../assets/argentBankLogo.png';
 import { Link } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../_store/actions/authActions';
+import { logoutUser } from '../_store/middlewares/authMiddleware';
 
 export default function Navbar() {
   const dispatch = useDispatch();
