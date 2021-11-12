@@ -17,7 +17,6 @@ const baseURL = 'http://localhost:3001/api/v1/user';
 export const login = (email, password) => {
   return (dispatch) => {
     axios
-      // .post(`http://localhost:3001/api/v1/user/login`, {
       .post(baseURL + '/login', {
         email,
         password,
@@ -29,7 +28,7 @@ export const login = (email, password) => {
         window.location.replace(`/profile`);
       })
       .catch((error) => {
-        dispatch(loginFailure(error.message)); // 400 (Bad Request)
+        dispatch(loginFailure(error.message));
       });
   };
 };
