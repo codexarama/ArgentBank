@@ -7,8 +7,9 @@ import {
 } from '../actions/_types';
 
 const initialstate = {
-  user: null,
+  token: null,
   isAuth: false,
+  user: null,
   firstName: '',
   lastName: '',
 };
@@ -28,18 +29,24 @@ export const authReducer = (state = initialstate, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
+        // token: action.token,
+        // token: action.payload.token,
         user: action.user,
+        // user: action.payload.user,
         isAuth: true,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
+        // token: null,
         user: null,
         error: action.error,
+        // error: action.payload.error,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
+        // token: null,
         user: null,
         isAuth: false,
       };
@@ -67,12 +74,25 @@ export const userReducer = (state = initialstate, action) => {
         ...state,
         user: action.user,
         error: action.error,
+        // user: action.payload.user,
+        // error: action.payload.error,
       };
     case EDIT_PROFILE:
       return {
         ...state,
-        firstName: action.firstName,
-        lastName: action.lastName,
+        user: { firstName: action.firstName, lastName: action.lastName },
+      };
+    // case EDIT_PROFILE:
+    //   return {
+    //     ...state,
+    //     firstName: action.firstName,
+    //     lastName: action.lastName,
+    //   };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        user: null,
+        isAuth: false,
       };
     default:
       return state;
