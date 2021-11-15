@@ -4,7 +4,7 @@ import logo from '../assets/argentBankLogo.png';
 import { Link } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../_store/middlewares/authMiddleware';
+import { logout } from '../_store/middlewares/authMiddleware';
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export default function Navbar() {
             // EMPECHER LE RECHARGEMENT DE LA PAGE : NE FONCTIONNE PAS
             onClick={(event) => {
               event.preventDefault();
-              dispatch(logoutUser());
+              dispatch(logout());
             }}
           >
             <i className="fa fa-sign-out sign-out-icon"></i>

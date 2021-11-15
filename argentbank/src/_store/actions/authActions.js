@@ -1,4 +1,8 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from './types';
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_SUCCESS,
+} from './_types';
 
 export const loginSuccess = (user) => ({
   type: LOGIN_SUCCESS,
@@ -12,6 +16,6 @@ export const loginFailure = (error) => ({
   },
 });
 
-export const logout = () => ({
-  type: LOGOUT,
+export const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS,
 });

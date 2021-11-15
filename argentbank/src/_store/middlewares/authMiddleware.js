@@ -1,23 +1,24 @@
 import axios from 'axios';
-import { loginSuccess, loginFailure, logout } from '../actions/authActions';
+import { loginSuccess, loginFailure, logoutSuccess } from '../actions/authActions';
 import {
   setValueToLocalStorage,
   removeValueFromLocalStorage,
 } from '../../utils/localStorage';
 
 const baseURL = 'http://localhost:3001/api/v1/user';
+// const baseURL = `${process.env.REACT_APP_API_URL}/api/v1/user`;
 
 /**
  * LOGIN SERVICE
  * handle user authentication
  * @param   {string}  email     [user email]
  * @param   {string}  password  [user password]
- * @returns {object}  response  [data | undefined | error]
+ * @returns {object}  response  [data || undefined || error]
  */
 export const login = (email, password) => {
   return (dispatch) => {
     axios
-      .post(baseURL + '/login', {
+      .post(`${baseURL}/login`, {
         email,
         password,
       })
@@ -25,6 +26,7 @@ export const login = (email, password) => {
         dispatch(loginSuccess(response.data.body));
         setValueToLocalStorage('TOKEN', response.data.body.token);
         setValueToLocalStorage('USER', response.data.body.user.firstName);
+        // setValueToLocalStorage('USER', response.data.body.user.firstName + ' ' + response.data.body.user.lastName);
         window.location.replace(`/profile`);
       })
       .catch((error) => {
@@ -39,9 +41,9 @@ export const login = (email, password) => {
  *
  * @return  {function}  [remove data from local storage, redirect to home page]
  */
-export const logoutUser = () => {
+export const logout = () => {
   return (dispatch) => {
-    dispatch(logout());
+    dispatch(logoutSuccess());
     removeValueFromLocalStorage('TOKEN');
     removeValueFromLocalStorage('USER');
     window.location.replace(`/`);
