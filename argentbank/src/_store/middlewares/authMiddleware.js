@@ -10,12 +10,13 @@ const baseURL = 'http://localhost:3001/api/v1/user';
 
 /**
  * LOGIN SERVICE
+ * fetch JWT & user data
  * handle user authentication
  * @param   {string}  email     [user email]
  * @param   {string}  password  [user password]
  * @returns {object}  response  [data || undefined || error]
  */
-export const login = (email, password) => {
+export function login(email, password) {
   return (dispatch) => {
     axios
       .post(`${baseURL}/login`, {
@@ -25,27 +26,26 @@ export const login = (email, password) => {
       .then((response) => {
         dispatch(loginSuccess(response.data.body));
         setValueToLocalStorage('TOKEN', response.data.body.token);
-        setValueToLocalStorage('USER', response.data.body.user.firstName);
-        // setValueToLocalStorage('USER', response.data.body.user.firstName + ' ' + response.data.body.user.lastName);
+        // setValueToLocalStorage('USER', response.data.body.user.firstName);
+        setValueToLocalStorage('USER', response.data.body.user.firstName + ' ' + response.data.body.user.lastName);
         window.location.replace(`/profile`);
       })
       .catch((error) => {
         dispatch(loginFailure(error.message));
       });
   };
-};
+}
 
 /**
  * LOGOUT SERVICE
  * handle user disconnection
- *
  * @return  {function}  [remove data from local storage, redirect to home page]
  */
-export const logout = () => {
+export function logout() {
   return (dispatch) => {
     dispatch(logoutSuccess());
     removeValueFromLocalStorage('TOKEN');
     removeValueFromLocalStorage('USER');
     window.location.replace(`/`);
   };
-};
+}

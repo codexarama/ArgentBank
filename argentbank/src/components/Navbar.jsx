@@ -38,7 +38,7 @@ export default function Navbar() {
             // EMPECHER LE RECHARGEMENT DE LA PAGE : NE FONCTIONNE PAS
             onClick={(event) => {
               event.preventDefault();
-              dispatch(logout());
+              dispatch(logout(event));
             }}
           >
             <i className="fa fa-sign-out sign-out-icon"></i>
