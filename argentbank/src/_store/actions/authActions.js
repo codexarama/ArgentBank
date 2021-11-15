@@ -1,64 +1,26 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from './types';
 import {
-  setValueToLocalStorage,
-  removeValueFromLocalStorage,
-} from '../../utils/localStorage';
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_SUCCESS,
+} from './_types';
 
-import axios from 'axios';
+// export const loginSuccess = (token) => ({
+//   type: LOGIN_SUCCESS,
+//   payload: token,
+// });
 
-/**
- * LOGIN ACTION
- *
- * @param   {string}  email     [user email]
- * @param   {string}  password  [user password]
- *
- * @return  {object}            [token, user first name, errors]
- */
-export const login = ({ email, password }) => {
-  return (dispatch) => {
-    axios
-      .post(`http://localhost:3001/api/v1/user/login`, {
-        email,
-        password,
-      })
-      .then((response) => {
-        dispatch(loginSuccess(response.data.body));
-        setValueToLocalStorage('TOKEN', response.data.body.token);
-        setValueToLocalStorage('USER', response.data.body.user.firstName);
-        window.location.replace(`/profile`);
-      })
-      .catch((error) => {
-        dispatch(loginFailure(error.message)); 
-      });
-  };
-};
-
-const loginSuccess = (user) => ({
+export const loginSuccess = (user) => ({
   type: LOGIN_SUCCESS,
   payload: user,
 });
 
-const loginFailure = (error) => ({
+export const loginFailure = (error) => ({
   type: LOGIN_FAILURE,
   payload: {
     error,
   },
 });
 
-/**
- * LOGOUT ACTION
- *
- * @return  {function}  [remove data, redirect to home page]
- */
-export const logoutUser = () => {
-  return (dispatch) => {
-    dispatch(logout());
-    removeValueFromLocalStorage('TOKEN');
-    removeValueFromLocalStorage('USER');
-    window.location.replace(`/`);
-  };
-};
-
-const logout = () => ({
-  type: LOGOUT,
+export const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS,
 });

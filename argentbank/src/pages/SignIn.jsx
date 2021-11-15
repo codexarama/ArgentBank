@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../_store/actions/authActions';
+import { useDispatch } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+
+import { login } from '../_store/middlewares/authMiddleware';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -11,12 +13,12 @@ export default function SignIn() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(login({ email, password }));
+    dispatch(login(email, password));
     setSubmitted(true);
   };
 
-  const user = useSelector((state) => state.authReducer.user);
-  console.log(user);
+  // const user = useSelector((state) => state.authReducer.user);
+  // console.log(user);
 
   return (
     <main className="main bg-dark">
