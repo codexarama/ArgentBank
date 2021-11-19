@@ -6,13 +6,13 @@ import {
 } from '../actions/authActions';
 // SESSION STORAGE
 // NE FONCTIONNE PAS
-// import {
-//   setValueToSessionStorage,
-//   removeValueFromSessionStorage,
-// } from '../../utils/sessionStorage';
+import {
+  setValueToSessionStorage,
+  clearSessionStorage,
+} from '../../utils/sessionStorage';
 import {
   setValueToLocalStorage,
-  clearLocalStorage
+  clearLocalStorage,
 } from '../../utils/localStorage';
 
 const baseURL = 'http://localhost:3001/api/v1/user';
@@ -26,7 +26,7 @@ const baseURL = 'http://localhost:3001/api/v1/user';
  * @param   {string}  password  [user password]
  * @returns {object}  response  [data {token, user first name, user last name} || undefined || error]
  */
-export function login(email, password) {
+export function login(email, password, rememberMe) {
   return (dispatch) => {
     axios
       .post(`${baseURL}/login`, {
@@ -34,20 +34,35 @@ export function login(email, password) {
         password,
       })
       .then((response) => {
-        dispatch(loginSuccess(response.data.body));
-        setValueToLocalStorage('TOKEN', response.data.body.token);
-        // setValueToLocalStorage('USER', response.data.body.user.firstName);
-        setValueToLocalStorage(
-          'USER',
-          response.data.body.user.firstName +
-            ' ' +
-            response.data.body.user.lastName
-        );
+        // rememberMe // NE RENVOIE QUE LA 1e OCCURRENCE
+        //   ? ((setValueToLocalStorage('USER', response.data.body.user.firstName)) && (setValueToLocalStorage('TOKEN', response.data.body.token)))
+        //   : ((setValueToSessionStorage('USER', response.data.body.user.firstName)) && (setValueToSessionStorage('TOKEN', response.data.body.token)));
+        //   // ? (setValueToLocalStorage('TOKEN', response.data.body.token) && setValueToLocalStorage('USER', response.data.body.user.firstName))
+        //   // : (setValueToSessionStorage('TOKEN', response.data.body.token) && setValueToSessionStorage('USER', response.data.body.user.firstName));
 
-        // SESSION STORAGE
-        // NE FONCTIONNE PAS
-        // setValueToSessionStorage('TOKEN', response.data.body.token);
-        // setValueToSessionStorage('USER', response.data.body.user.firstName + ' ' + response.data.body.user.lastName);
+        dispatch(loginSuccess(response.data.body));
+
+        if (rememberMe) {
+          setValueToLocalStorage('TOKEN', response.data.body.token);
+          // setValueToLocalStorage('USER', response.data.body.user.firstName);
+          setValueToLocalStorage(
+            'USER',
+            response.data.body.user.firstName +
+              ' ' +
+              response.data.body.user.lastName
+          );
+        }
+
+        if (!rememberMe) {
+          setValueToSessionStorage('TOKEN', response.data.body.token);
+          // setValueToSessionStorage('USER', response.data.body.user.firstName);
+          setValueToSessionStorage(
+            'USER',
+            response.data.body.user.firstName +
+              ' ' +
+              response.data.body.user.lastName
+          );
+        }
 
         window.location.replace(`/profile`);
       })
@@ -60,18 +75,13 @@ export function login(email, password) {
 /**
  * LOGOUT SERVICE
  * handle user disconnection
- * @return  {function}  [remove data from local storage, redirect to home page]
+ * @return  {function}  [remove data from local && session storage, redirect to home page]
  */
 export function logout() {
   return (dispatch) => {
     dispatch(logoutSuccess());
-
-    // SESSION STORAGE
-    // NE FONCTIONNE PAS
-    // clearSessionStorage()
-
-    clearLocalStorage()
-
+    clearSessionStorage();
+    clearLocalStorage();
     window.location.replace(`/`);
   };
 }
