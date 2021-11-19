@@ -1,5 +1,7 @@
-import React from 'react';
-
+/**
+ * Render the Footer component
+ * @returns {Reactnode} jsx injected in DOM
+ */
 export default function Footer() {
   return (
     <footer className="footer">
