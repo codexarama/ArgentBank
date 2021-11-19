@@ -16,7 +16,7 @@ import {
 } from '../../utils/localStorage';
 
 const baseURL = 'http://localhost:3001/api/v1/user';
-// const baseURL = `${process.env.REACT_APP_API_URL}/api/v1/user`;
+// const baseURL = `${process.env.REACT_APP_API_URL}`;
 
 /**
  * LOGIN SERVICE
