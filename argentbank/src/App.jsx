@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
+import PrivateRoute from './private/Route';
 import Footer from './components/Footer';
 
 import './App.css';
@@ -14,7 +15,9 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={SignIn} />
-        <Route path="/profile" component={Profile} />
+        <PrivateRoute path="/profile" component={Profile} />{' '}
+        {/* <Route path="/profile" component={Profile} /> */}
+        {/* <Route path="/profile/update" component={User} /> */}
         <Route
           path="*"
           render={() => (
