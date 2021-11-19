@@ -4,32 +4,37 @@ import Welcome from '../components/Welcome';
 import User from '../components/UpdateProfile';
 import { accountData } from '../services/data';
 import Account from '../components/Account';
+import { getValueFromSessionStorage } from '../utils/sessionStorage';
+import { getValueFromLocalStorage } from '../utils/localStorage';
 // import { Redirect } from 'react-router';
 
+/**
+ * 
+ * @returns 
+ */
 export default function Profile() {
   useEffect(() => {
     document.title = 'Argent Bank | Profile';
   }, []);
 
-  const [showForm, setShowForm] = useState(false);
-  // const [changeProfile, setChangeProfile] = useState(false);
+  const [editProfile, setEditProfile] = useState(false);
 
-  const user = localStorage.getItem('USER');
+  let user =
+    getValueFromLocalStorage('USER') || getValueFromSessionStorage('USER');
 
   return (
     <main className="profile bg-dark">
-      {showForm ? (
+      {editProfile ? (
         <User />
-        // <Redirect to="profile/update" />
       ) : (
+        // <Redirect to="profile/update" />
         <>
           <Welcome fullName={user} />
           <input
             className="edit-button"
             type="submit"
             value="Edit Name"
-            onClick={() => setShowForm(true)}
-            // onClick={() => setChangeProfile(true)}
+            onClick={() => setEditProfile(true)}
           />
           <h2 className="sr-only">Accounts</h2>
           {accountData.map((item) => (
