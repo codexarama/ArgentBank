@@ -4,15 +4,15 @@ import {
   LOGOUT_SUCCESS,
 } from './_types';
 
-// export const loginSuccess = (token) => ({
-//   type: LOGIN_SUCCESS,
-//   payload: token,
-// });
-
-export const loginSuccess = (user) => ({
+export const loginSuccess = (token) => ({
   type: LOGIN_SUCCESS,
-  payload: user,
+  payload: token,
 });
+
+// export const loginSuccess = (user) => ({
+//   type: LOGIN_SUCCESS,
+//   payload: user,
+// });
 
 export const loginFailure = (error) => ({
   type: LOGIN_FAILURE,
