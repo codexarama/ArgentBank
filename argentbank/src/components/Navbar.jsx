@@ -1,11 +1,10 @@
-import React from 'react';
-
 import logo from '../assets/argentBankLogo.png';
 import { Link } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { logout } from '../_store/middlewares/authMiddleware';
 
+// export default function Navbar(props) {
 export default function Navbar() {
   const dispatch = useDispatch();
   const user = localStorage.getItem('USER');
@@ -27,15 +26,16 @@ export default function Navbar() {
         </Link>
       ) : (
         <ul className="main-nav-item">
-          <li className="main-nav-item"
-          // AJOUTER onclick = edit => user profile
-           >
+          <li className="main-nav-item">
+            <Link className="main-nav-item" to='/profile'>
             <i className="fa fa-user-circle sign-in-icon"></i>
-            {user}
+            <span>{user}</span>
+            </Link>
           </li>
           <li
             className="main-nav-item"
-            // EMPECHER LE RECHARGEMENT DE LA PAGE : NE FONCTIONNE PAS
+            // EMPECHER LE RECHARGEMENT DE LA PAGE
+            // NE FONCTIONNE PAS
             onClick={(event) => {
               event.preventDefault();
               dispatch(logout(event));

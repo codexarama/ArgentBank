@@ -18,17 +18,12 @@ body {
 /* MAIN */
 .main {
   display: flex;
-  flex-direction: row;
-  flex: 1;
-  margin: auto;
-  /* flex-wrap: wrap; */
+  justify-content: center;
+  align-items: center;
 }
 
 .bg-dark {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 87.5vh;
+  height: 85vh;
   background-color: #12002b;
 }
 
@@ -147,6 +142,7 @@ body {
 }
 
 .features {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   width: 33%;
@@ -178,7 +174,9 @@ body {
 }
 
 /* SIGN IN PAGE */
-.sign-in-button {
+.sign-in-button,
+.update-profile-button,
+.cancel-button {
   display: block;
   width: 100%;
   padding: 8px;
@@ -190,7 +188,18 @@ body {
   color: #fff;
 }
 
-.sign-in-content {
+.update-profile-button {
+  border-color: #00bc77;
+  background-color: #00bc77;
+}
+
+.cancel-button {
+  border-color: #ff6060;
+  background-color: #ff6060;
+}
+
+.sign-in-content,
+.update-profile-content {
   box-sizing: border-box;
   background-color: white;
   width: 300px;
@@ -199,6 +208,7 @@ body {
 }
 
 .sign-in-icon,
+.update-profile-icon,
 .sign-out-icon {
   font-size: 2rem;
   margin-right: 0.5rem;
@@ -229,7 +239,7 @@ body {
 }
 
 .input-error {
-  color : #ed6454
+  color: #ed6454;
 }
 
 .footer {
@@ -239,7 +249,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  background: #FFF;
+  background: #fff;
   border-top: 2px solid #ccc;
   padding: 2rem 0 1.5rem;
 }
@@ -253,11 +263,12 @@ body {
 .header {
   width: 100%;
   color: #fff;
-  margin-bottom: 2rem;
 }
 
 .profile {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .account {
@@ -302,6 +313,7 @@ body {
   background-color: #00bc77;
   color: #fff;
   font-weight: bold;
+  margin: 2rem auto 4rem;
   padding: 10px;
 }
 

@@ -29,25 +29,25 @@ export const authReducer = (state = initialstate, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        // token: action.token,
+        token: action.token,
         // token: action.payload.token,
-        user: action.user,
+        // user: action.user,
         // user: action.payload.user,
         isAuth: true,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        // token: null,
-        user: null,
+        token: null,
+        // user: null,
         error: action.error,
         // error: action.payload.error,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        // token: null,
-        user: null,
+        token: null,
+        // user: null,
         isAuth: false,
       };
     default:
