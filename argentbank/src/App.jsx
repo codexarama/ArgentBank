@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
+// import UpdateProfile from './components/UpdateProfile';
 import PrivateRoute from './private/Route';
 import Footer from './components/Footer';
 
@@ -16,8 +17,7 @@ export default function App() {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={SignIn} />
         <PrivateRoute path="/profile" component={Profile} />{' '}
-        {/* <Route path="/profile" component={Profile} /> */}
-        {/* <Route path="/profile/update" component={User} /> */}
+        {/* <Route path="/profile/update" component={UpdateProfile} /> */}
         <Route
           path="*"
           render={() => (
