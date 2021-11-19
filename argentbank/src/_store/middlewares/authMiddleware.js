@@ -12,7 +12,7 @@ import {
 // } from '../../utils/sessionStorage';
 import {
   setValueToLocalStorage,
-  removeValueFromLocalStorage,
+  clearLocalStorage
 } from '../../utils/localStorage';
 
 const baseURL = 'http://localhost:3001/api/v1/user';
@@ -43,6 +43,7 @@ export function login(email, password) {
             ' ' +
             response.data.body.user.lastName
         );
+
         // SESSION STORAGE
         // NE FONCTIONNE PAS
         // setValueToSessionStorage('TOKEN', response.data.body.token);
@@ -64,12 +65,12 @@ export function login(email, password) {
 export function logout() {
   return (dispatch) => {
     dispatch(logoutSuccess());
+
     // SESSION STORAGE
     // NE FONCTIONNE PAS
-    // removeValueFromSessionStorage('TOKEN');
-    // removeValueFromSessionStorage('USER');
-    removeValueFromLocalStorage('TOKEN');
-    removeValueFromLocalStorage('USER');
+    // clearSessionStorage()
+
+    clearLocalStorage()
 
     window.location.replace(`/`);
   };
