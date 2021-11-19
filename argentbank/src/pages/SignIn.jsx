@@ -4,20 +4,27 @@ import { useDispatch } from 'react-redux';
 
 import { login } from '../_store/middlewares/authMiddleware';
 
+/**
+ * 
+ * @returns 
+ */
 export default function SignIn() {
   useEffect(() => {
-    document.title = "Argent Bank | Sign In";
+    document.title = 'Argent Bank | Sign In';
   }, []);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const dispatch = useDispatch();
 
+//   useEffect(() => {}, [])
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(login(email, password));
+    dispatch(login(email, password, rememberMe));
     setSubmitted(true);
   };
 
@@ -31,16 +38,16 @@ export default function SignIn() {
         <h1>Sign In</h1>
         <form action="" onSubmit={handleSubmit} id="sign-in-form">
           <div className="input-wrapper">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
-              id="username"
-              autoComplete="current-username"
+              id="email"
+              autoComplete="current-email"
               onChange={(event) => setEmail(event.target.value)}
               value={email}
             />
             {submitted && !email && (
-              <small className="input-error">Username is required</small>
+              <small className="input-error">Email is required</small>
             )}
           </div>
           <div className="input-wrapper">
@@ -57,7 +64,14 @@ export default function SignIn() {
             )}
           </div>
           <div className="input-remember">
-            <input type="checkbox" id="remember-me" />
+            <input
+              type="checkbox"
+              id="remember-me"
+              checked={rememberMe}
+              onChange={() => {
+                setRememberMe(!rememberMe);
+              }}
+            />
             <label htmlFor="remember-me">Remember me</label>
           </div>
           <input type="submit" value="Sign In" className="sign-in-button" />

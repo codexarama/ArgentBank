@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Profile from '../pages/Profile';
 // import { useDispatch, useSelector } from 'react-redux';
 
 import { newProfile } from '../_store/middlewares/userMiddleware';
 
+import Profile from '../pages/Profile';
+
+/**
+ *
+ * @returns
+ */
 export default function User() {
   useEffect(() => {
     document.title = 'Argent Bank | Update Profile';
   }, []);
 
-  const [showForm, setShowForm] = useState(true);
+  const [editProfile, setEditProfile] = useState(true);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [changeProfile, setChangeProfile] = useState(false);
 
   const dispatch = useDispatch();
+  
   // const user = useSelector((state) => state.userReducer.user);
   // console.log(user);
 
@@ -27,7 +33,7 @@ export default function User() {
 
   return (
     <>
-      {showForm ? (
+      {editProfile ? (
         <section className="update-profile-content">
           <i className="fa fa-user-circle update-profile-icon"></i>
           <h1>Update profile</h1>
@@ -68,7 +74,7 @@ export default function User() {
               onClick={() => {
                 setFirstName('');
                 setLastName('');
-                setShowForm(false);
+                setEditProfile(false);
               }}
             />
           </form>

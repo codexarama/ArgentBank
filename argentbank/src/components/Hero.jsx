@@ -1,7 +1,9 @@
-import React from 'react';
-
 const subtitle = ['No fees.', 'No minimum deposit.', 'High interest rates.'];
 
+/**
+ * Render the Hero component
+ * @returns {Reactnode} jsx injected in DOM
+ */
 export default function Hero() {
   return (
     <div className="hero">

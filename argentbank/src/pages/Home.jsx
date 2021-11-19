@@ -4,11 +4,15 @@ import { featureData } from '../services/data';
 import Hero from '../components/Hero';
 import Feature from '../components/Feature';
 
+/**
+ * 
+ * @returns 
+ */
 export default function Home() {
   useEffect(() => {
     document.title = "Argent Bank | Home";
   }, []);
-  
+
   return (
     <>
       <Hero />

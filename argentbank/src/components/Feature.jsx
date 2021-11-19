@@ -1,6 +1,15 @@
-import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
+/**
+ * Render the Feature component
+
+ * @param     {object}        props
+ * @param     {string}        props.src               [picture path source]
+ * @param     {string}        props.alt               [picture description]
+ * @param     {string}        props.title             [teaser text]
+ * @param     {string}        props.paragraph         [punch line]
+ * @returns   {Reactnode}     jsx injected in DOM
+ */
 export default function Feature({ src, alt, title, paragraph }) {
   return (
     <section className="features">
@@ -17,8 +26,7 @@ export default function Feature({ src, alt, title, paragraph }) {
 /**
  * Feature PROPTYPES
  */
-
- Feature.propTypes = {
+Feature.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
