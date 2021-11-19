@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 // import { useDispatch, useSelector } from 'react-redux';
 
 import { login } from '../_store/middlewares/authMiddleware';
 
 export default function SignIn() {
+  useEffect(() => {
+    document.title = "Argent Bank | Sign In";
+  }, []);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [submitted, setSubmitted] = useState(false);
