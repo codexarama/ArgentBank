@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { login } from '../_store/middlewares/authMiddleware';
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function SignIn() {
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function SignIn() {
             <input
               type="text"
               id="email"
-              autoComplete="current-email"
+              autoComplete="email"
               onChange={(event) => setEmail(event.target.value)}
               value={email}
             />
@@ -55,7 +55,6 @@ export default function SignIn() {
             <input
               type="password"
               id="password"
-              autoComplete="current-password"
               onChange={(event) => setPassword(event.target.value)}
               value={password}
             />
