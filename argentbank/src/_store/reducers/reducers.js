@@ -6,25 +6,29 @@ import {
   EDIT_FAILURE,
 } from '../actions/_types';
 
-import { getValueFromSessionStorage } from '../../utils/sessionStorage';
-import { getValueFromLocalStorage } from '../../utils/localStorage';
-
-const token =
-  getValueFromSessionStorage('TOKEN') || getValueFromLocalStorage('TOKEN');
-const user =
-  getValueFromSessionStorage('USER') || getValueFromLocalStorage('USER');
+import { token, user } from '../../utils/storage';
 
 const initialState = user
-  ? { isAuth: true, token, user }
-  : { isAuth: false, token: null, user: null };
+  ? {
+      isAuth: true,
+      token,
+      user,
+      firstName: user.split(' ')[0],
+      lastName: user.split(' ')[1],
+    }
+  : { isAuth: false, token: null, user: null, firstName: '', lastName: '' };
 
 /**
  * Authentication reducer
  *
- * @param   {object}   initialstate   user:   empty
+ * @param   {object}   state          initialState
+ * @param   {object}   initialstate   token:  null || JWT
+ * @param   {object}   initialstate   user:   null || user data
  * @param   {boolean}  initialstate   isAuth: boolean
+ *
  * @param   {object}   action         action
  *
+ * @return  {object}   token          new state
  * @return  {object}   user           new state
  * @return  {boolean}  isAuth         new state
  */
@@ -37,13 +41,11 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isAuth: true,
         token: payload.token,
-        // token: payload.payload.token,
         user: payload.user,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        // token: null,
         user: null,
         error: payload.error,
       };
@@ -62,14 +64,14 @@ export const authReducer = (state = initialState, action) => {
 /**
  * User Reducer
  *
- * @param   {object}   initialstate   user:      empty
- * @param   {string}   initialstate   firstName: ""
- * @param   {string}   initialstate   lastName:  ""
+ * @param   {object}   state          initialState
+ * @param   {string}   firstName      user first name
+ * @param   {string}   lastName       user last name
+ *
  * @param   {object}   action         action
  *
- * @return  {object}   user           new state
- * @param   {string}   firstName      new state
- * @param   {string}   lastName       new state
+ * @param   {string}   firstName      new state: new user first name
+ * @param   {string}   lastName       new state: new user first name
  */
 export const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -81,9 +83,18 @@ export const userReducer = (state = initialState, action) => {
         isAuth: true,
         token: state.token,
         user: state.user,
+        // firstName: payload.firstName,
+        // lastName: payload.lastName
         firstName: payload.firstName ? payload.firstName : state.firstName,
-        lastName: payload.firstName ? payload.lastName : state.lastName,
+        lastName: payload.lastName ? payload.lastName : state.lastName,
       };
+
+    // case EDIT_SUCCESS:
+    //   return {
+    //     ...state,
+    //     firstName: payload.firstName ? payload.firstName : state.firstName,
+    //     lastName: payload.lastName ? payload.lastName : state.lastName,
+    //   };
 
     case EDIT_FAILURE:
       return {

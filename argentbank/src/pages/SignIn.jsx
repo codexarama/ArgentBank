@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { login } from '../_store/middlewares/authMiddleware';
 
@@ -20,16 +20,16 @@ export default function SignIn() {
 
   const dispatch = useDispatch();
 
-//   useEffect(() => {}, [])
-
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(login(email, password, rememberMe));
     setSubmitted(true);
   };
 
-  // const user = useSelector((state) => state.authReducer.user);
-  // console.log(user);
+  const auth = (state) => state.authReducer;
+  const authUser = useSelector(auth);
+  console.log(authUser);
+  console.log(authUser.error);
 
   return (
     <main className="main bg-dark">
@@ -42,25 +42,26 @@ export default function SignIn() {
             <input
               type="text"
               id="email"
-              autoComplete="email"
+              // autoComplete="username"
               onChange={(event) => setEmail(event.target.value)}
               value={email}
             />
-            {submitted && !email && (
-              <small className="input-error">Email is required</small>
-            )}
+              {submitted && !email && (
+                <small>Email is required</small>
+              )}
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
+              // autoComplete="current-password"
               onChange={(event) => setPassword(event.target.value)}
               value={password}
             />
-            {submitted && !password && (
-              <small className="input-error">Password is required</small>
-            )}
+              {submitted && !password && (
+                <small>Password is required</small>
+              )}
           </div>
           <div className="input-remember">
             <input
@@ -75,6 +76,13 @@ export default function SignIn() {
           </div>
           <input type="submit" value="Sign In" className="sign-in-button" />
         </form>
+      </section>
+      <section className="input-alert">
+        {submitted && authUser.error && (
+          <small className="input-alert--msg">
+            Wrong email or password, please check
+          </small>
+        )}
       </section>
     </main>
   );

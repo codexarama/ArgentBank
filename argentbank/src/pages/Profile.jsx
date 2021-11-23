@@ -4,8 +4,7 @@ import Welcome from '../components/Welcome';
 import User from '../components/UpdateProfile';
 import { accountData } from '../services/data';
 import Account from '../components/Account';
-import { getValueFromSessionStorage } from '../utils/sessionStorage';
-import { getValueFromLocalStorage } from '../utils/localStorage';
+import { user } from '../utils/storage';
 // import { Redirect } from 'react-router';
 
 /**
@@ -18,9 +17,6 @@ export default function Profile() {
   }, []);
 
   const [editProfile, setEditProfile] = useState(false);
-
-  let user =
-    getValueFromLocalStorage('USER') || getValueFromSessionStorage('USER');
 
   return (
     <main className="profile bg-dark">
