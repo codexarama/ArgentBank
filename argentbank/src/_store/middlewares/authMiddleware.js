@@ -1,15 +1,16 @@
 import axios from 'axios';
+
 import {
   loginSuccess,
   loginFailure,
   logoutSuccess,
 } from '../actions/authActions';
-// SESSION STORAGE
-// NE FONCTIONNE PAS
+
 import {
   setValueToSessionStorage,
   clearSessionStorage,
 } from '../../utils/sessionStorage';
+
 import {
   setValueToLocalStorage,
   clearLocalStorage,
