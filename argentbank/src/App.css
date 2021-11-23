@@ -25,6 +25,7 @@ body {
 .bg-dark {
   height: 87vh;
   background-color: #12002b;
+  flex-direction: column;
 }
 
 /* masquage accessible */
@@ -223,10 +224,11 @@ body {
 }
 
 .input-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .input-wrapper label {
@@ -238,8 +240,21 @@ body {
   font-size: 1.2rem;
 }
 
-.input-error {
-  color: #ed6454;
+.input-wrapper small {
+  position: absolute;
+  top: 3.5rem;
+  color: #ff6060;
+}
+
+.input-alert {
+  height: 3rem;
+  background: #ff6060;
+  width: 300px;
+}
+
+.input-alrt--msg {
+  line-height: 3rem;
+  color: white;
 }
 
 .footer {
