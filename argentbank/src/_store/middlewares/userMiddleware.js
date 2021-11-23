@@ -2,10 +2,12 @@ import axios from 'axios';
 
 import { editSuccess, editFailure } from '../actions/userActions';
 
+import { token, user } from '../../utils/storage';
+
 import {
-  getValueFromSessionStorage,
   setValueToSessionStorage,
-} from '../../utils/sessionStorage';
+  setValueToLocalStorage,
+} from '../../utils/storage';
 
 const baseURL = 'http://localhost:3001/api/v1/user';
 // const baseURL = `${process.env.REACT_APP_API_URL}/api/v1/user`;
@@ -17,8 +19,6 @@ const baseURL = 'http://localhost:3001/api/v1/user';
  * @returns
  */
 export function newProfile(firstName, lastName) {
-  const token = getValueFromSessionStorage('TOKEN');
-
   return (dispatch) => {
     axios
       .put(
@@ -28,12 +28,30 @@ export function newProfile(firstName, lastName) {
       )
       .then((response) => {
         dispatch(editSuccess((firstName, lastName)));
-        setValueToSessionStorage(
-          'USER',
-          response.data.body.user.firstName +
-            ' ' +
-            response.data.body.user.lastName
-        );
+
+        console.log(sessionStorage.length);
+        console.log(localStorage.length);
+
+        sessionStorage.length !== 0
+          ? setValueToSessionStorage(
+              'USER',
+              response.data.body.user.firstName +
+                ' ' +
+                response.data.body.user.lastName
+            )
+          : setValueToLocalStorage(
+              'USER',
+              response.data.body.user.firstName +
+                ' ' +
+                response.data.body.user.lastName
+            );
+
+        // setValueToSessionStorage(
+        //   'USER',
+        //   response.data.body.user.firstName +
+        //     ' ' +
+        //     response.data.body.user.lastName
+        // );
       })
       .catch((error) => {
         dispatch(editFailure(error.message));

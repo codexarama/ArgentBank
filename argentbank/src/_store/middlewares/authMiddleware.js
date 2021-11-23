@@ -35,17 +35,15 @@ export function login(email, password, rememberMe) {
         password,
       })
       .then((response) => {
+
         // rememberMe // NE RENVOIE QUE LA 1e OCCURRENCE
-        //   ? ((setValueToLocalStorage('USER', response.data.body.user.firstName)) && (setValueToLocalStorage('TOKEN', response.data.body.token)))
-        //   : ((setValueToSessionStorage('USER', response.data.body.user.firstName)) && (setValueToSessionStorage('TOKEN', response.data.body.token)));
-        //   // ? (setValueToLocalStorage('TOKEN', response.data.body.token) && setValueToLocalStorage('USER', response.data.body.user.firstName))
-        //   // : (setValueToSessionStorage('TOKEN', response.data.body.token) && setValueToSessionStorage('USER', response.data.body.user.firstName));
+        // ? (setValueToLocalStorage('TOKEN', response.data.body.token) && setValueToLocalStorage('USER', response.data.body.user.firstName))
+        // : (setValueToSessionStorage('TOKEN', response.data.body.token) && setValueToSessionStorage('USER', response.data.body.user.firstName));
 
         dispatch(loginSuccess(response.data.body));
 
         if (rememberMe) {
           setValueToLocalStorage('TOKEN', response.data.body.token);
-          // setValueToLocalStorage('USER', response.data.body.user.firstName);
           setValueToLocalStorage(
             'USER',
             response.data.body.user.firstName +
@@ -56,7 +54,6 @@ export function login(email, password, rememberMe) {
 
         if (!rememberMe) {
           setValueToSessionStorage('TOKEN', response.data.body.token);
-          // setValueToSessionStorage('USER', response.data.body.user.firstName);
           setValueToSessionStorage(
             'USER',
             response.data.body.user.firstName +

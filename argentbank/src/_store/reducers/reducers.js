@@ -6,13 +6,7 @@ import {
   EDIT_FAILURE,
 } from '../actions/_types';
 
-import { getValueFromSessionStorage } from '../../utils/sessionStorage';
-import { getValueFromLocalStorage } from '../../utils/localStorage';
-
-const token =
-  getValueFromSessionStorage('TOKEN') || getValueFromLocalStorage('TOKEN');
-const user =
-  getValueFromSessionStorage('USER') || getValueFromLocalStorage('USER');
+import { token, user } from '../../utils/storage';
 
 const initialState = user
   ? {

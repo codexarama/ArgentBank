@@ -1,21 +1,17 @@
 import logo from '../assets/argentBankLogo.png';
 import { Link } from 'react-router-dom';
 
-import { getValueFromSessionStorage } from '../utils/sessionStorage';
-import { getValueFromLocalStorage } from '../utils/localStorage';
+import { user } from '../utils/storage';
 
 import { useDispatch } from 'react-redux';
 import { logout } from '../_store/middlewares/authMiddleware';
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function Navbar() {
   const dispatch = useDispatch();
-
-  let user =
-    getValueFromLocalStorage('USER') || getValueFromSessionStorage('USER');
 
   return (
     <nav className="main-nav">
