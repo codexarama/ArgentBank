@@ -2,17 +2,24 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_SUCCESS,
-  GET_USER,
-  EDIT_PROFILE,
+  EDIT_SUCCESS,
+  EDIT_FAILURE,
 } from '../actions/_types';
 
-const initialstate = {
-  token: null,
+const initialState = {
   isAuth: false,
+  token: null,
   user: null,
   firstName: '',
   lastName: '',
+
 };
+
+// const loggedUser = {
+//   isAuth: true,
+//   token: null,
+//   user: null,
+// }
 
 /**
  * Authentication reducer
@@ -24,16 +31,16 @@ const initialstate = {
  * @return  {object}   user           new state
  * @return  {boolean}  isAuth         new state
  */
-export const authReducer = (state = initialstate, action) => {
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        // token: action.token,
+        isAuth: true,
+        token: action.token,
         // token: action.payload.token,
         user: action.user,
         // user: action.payload.user,
-        isAuth: true,
       };
     case LOGIN_FAILURE:
       return {
@@ -46,9 +53,9 @@ export const authReducer = (state = initialstate, action) => {
     case LOGOUT_SUCCESS:
       return {
         ...state,
+        isAuth: false,
         // token: null,
         user: null,
-        isAuth: false,
       };
     default:
       return state;
@@ -67,27 +74,41 @@ export const authReducer = (state = initialstate, action) => {
  * @param   {string}   firstName      new state
  * @param   {string}   lastName       new state
  */
-export const userReducer = (state = initialstate, action) => {
+export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER:
-      return {
-        ...state,
-        user: action.user,
-        error: action.error,
-        // user: action.payload.user,
-        // error: action.payload.error,
-      };
-    case EDIT_PROFILE:
-      return {
-        ...state,
-        user: { firstName: action.firstName, lastName: action.lastName },
-      };
-    // case EDIT_PROFILE:
+    // case EDIT_SUCCESS:
     //   return {
     //     ...state,
-    //     firstName: action.firstName,
-    //     lastName: action.lastName,
+    //     user: action.user,
+    //     // user: action.payload.user,
+    //     isAuth: true,
     //   };
+    case EDIT_SUCCESS:
+    return {
+      ...state,
+      isAuth: true,
+      token:action.token,
+      user: action.user,
+      firstName: action.firstName,
+      lastName: action.lastName,
+
+    };
+    // case EDIT_SUCCESS:
+    //   return {
+    //     ...state,
+    //     token: action.token,
+    //     user: action.user,
+    //     // user: { firstName: action.firstName, lastName: action.lastName },
+    //     isAuth: true,
+    //   };
+    case EDIT_FAILURE:
+      return {
+        ...state,
+        // token: null,
+        user: null,
+        error: action.error,
+        // error: action.payload.error,
+      };
     case LOGOUT_SUCCESS:
       return {
         ...state,

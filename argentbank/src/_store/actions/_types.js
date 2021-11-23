@@ -8,5 +8,5 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCCESS';
 /**
  * user action types
  */
-export const GET_USER = 'GET_USER';
-export const EDIT_PROFILE = 'EDIT_PROFILE';
+export const EDIT_SUCCESS = 'EDIT_SUCCESS';
+export const EDIT_FAILURE = 'EDIT_FAILURE';

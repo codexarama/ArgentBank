@@ -9,9 +9,9 @@ import {
 //   payload: token,
 // });
 
-export const loginSuccess = (user) => ({
+export const loginSuccess = (token, user) => ({
   type: LOGIN_SUCCESS,
-  payload: user,
+  payload: token, user
 });
 
 export const loginFailure = (error) => ({

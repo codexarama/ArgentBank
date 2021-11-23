@@ -9,8 +9,8 @@ import { getValueFromLocalStorage } from '../utils/localStorage';
 // import { Redirect } from 'react-router';
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function Profile() {
   useEffect(() => {
