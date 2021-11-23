@@ -8,9 +8,9 @@ import {
   //   payload: { user },
   // });
 
-  export const editSuccess = (firstName, lastName) => ({
+  export const editSuccess = (token, user, firstName, lastName) => ({
     type: EDIT_SUCCESS,
-    payload: { firstName, lastName },
+    payload: token, user, firstName, lastName,
   });
 
   // export const editSuccess = (user, token, firstName, lastName) => ({

@@ -6,20 +6,17 @@ import {
   EDIT_FAILURE,
 } from '../actions/_types';
 
-const initialState = {
-  isAuth: false,
-  token: null,
-  user: null,
-  firstName: '',
-  lastName: '',
+import { getValueFromSessionStorage } from '../../utils/sessionStorage';
+import { getValueFromLocalStorage } from '../../utils/localStorage';
 
-};
+const token =
+  getValueFromSessionStorage('TOKEN') || getValueFromLocalStorage('TOKEN');
+const user =
+  getValueFromSessionStorage('USER') || getValueFromLocalStorage('USER');
 
-// const loggedUser = {
-//   isAuth: true,
-//   token: null,
-//   user: null,
-// }
+const initialState = user
+  ? { isAuth: true, token, user }
+  : { isAuth: false, token: null, user: null };
 
 /**
  * Authentication reducer
@@ -32,23 +29,23 @@ const initialState = {
  * @return  {boolean}  isAuth         new state
  */
 export const authReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case LOGIN_SUCCESS:
       return {
         ...state,
         isAuth: true,
-        token: action.token,
-        // token: action.payload.token,
-        user: action.user,
-        // user: action.payload.user,
+        token: payload.token,
+        // token: payload.payload.token,
+        user: payload.user,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         // token: null,
         user: null,
-        error: action.error,
-        // error: action.payload.error,
+        error: payload.error,
       };
     case LOGOUT_SUCCESS:
       return {
@@ -75,45 +72,32 @@ export const authReducer = (state = initialState, action) => {
  * @param   {string}   lastName       new state
  */
 export const userReducer = (state = initialState, action) => {
-  switch (action.type) {
-    // case EDIT_SUCCESS:
-    //   return {
-    //     ...state,
-    //     user: action.user,
-    //     // user: action.payload.user,
-    //     isAuth: true,
-    //   };
-    case EDIT_SUCCESS:
-    return {
-      ...state,
-      isAuth: true,
-      token:action.token,
-      user: action.user,
-      firstName: action.firstName,
-      lastName: action.lastName,
+  const { type, payload } = action;
 
-    };
-    // case EDIT_SUCCESS:
-    //   return {
-    //     ...state,
-    //     token: action.token,
-    //     user: action.user,
-    //     // user: { firstName: action.firstName, lastName: action.lastName },
-    //     isAuth: true,
-    //   };
+  switch (type) {
+    case EDIT_SUCCESS:
+      return {
+        ...state,
+        isAuth: true,
+        token: state.token,
+        user: state.user,
+        firstName: payload.firstName ? payload.firstName : state.firstName,
+        lastName: payload.firstName ? payload.lastName : state.lastName,
+      };
+
     case EDIT_FAILURE:
       return {
         ...state,
-        // token: null,
-        user: null,
-        error: action.error,
-        // error: action.payload.error,
+        isAuth: true,
+        token: state.token,
+        user: state.user,
+        error: payload.error,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        user: null,
         isAuth: false,
+        user: null,
       };
     default:
       return state;
