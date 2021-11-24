@@ -52,9 +52,7 @@ export const authReducer = (state = initialState, action) => {
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        isAuth: false,
-        // token: null,
-        user: null,
+        initialState,
       };
     default:
       return state;
@@ -89,13 +87,6 @@ export const userReducer = (state = initialState, action) => {
         lastName: payload.lastName ? payload.lastName : state.lastName,
       };
 
-    // case EDIT_SUCCESS:
-    //   return {
-    //     ...state,
-    //     firstName: payload.firstName ? payload.firstName : state.firstName,
-    //     lastName: payload.lastName ? payload.lastName : state.lastName,
-    //   };
-
     case EDIT_FAILURE:
       return {
         ...state,
@@ -104,11 +95,11 @@ export const userReducer = (state = initialState, action) => {
         user: state.user,
         error: payload.error,
       };
+
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        isAuth: false,
-        user: null,
+        initialState,
       };
     default:
       return state;
