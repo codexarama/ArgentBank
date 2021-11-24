@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 // import { useDispatch } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -17,6 +18,10 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const handleChangeEmail = (event) => setEmail(event.target.value)
+  const handleChangePassword = (event) => setPassword(event.target.value)
+  const handleChangeRememberMe = () => setRememberMe(!rememberMe)
 
   const dispatch = useDispatch();
 
@@ -42,35 +47,29 @@ export default function SignIn() {
             <input
               type="text"
               id="email"
-              // autoComplete="username"
-              onChange={(event) => setEmail(event.target.value)}
               value={email}
+              onChange={handleChangeEmail}
+              autoComplete="username"
             />
-              {submitted && !email && (
-                <small>Email is required</small>
-              )}
+            {submitted && !email && <small>Email is required</small>}
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
-              // autoComplete="current-password"
-              onChange={(event) => setPassword(event.target.value)}
               value={password}
+              onChange={handleChangePassword}
+              autoComplete="current-password"
             />
-              {submitted && !password && (
-                <small>Password is required</small>
-              )}
+            {submitted && !password && <small>Password is required</small>}
           </div>
           <div className="input-remember">
             <input
               type="checkbox"
               id="remember-me"
               checked={rememberMe}
-              onChange={() => {
-                setRememberMe(!rememberMe);
-              }}
+              onChange={handleChangeRememberMe}
             />
             <label htmlFor="remember-me">Remember me</label>
           </div>

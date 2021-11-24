@@ -20,20 +20,29 @@ export default function User() {
   const [lastName, setLastName] = useState('');
   const [changeProfile, setChangeProfile] = useState(false);
 
-  const dispatch = useDispatch();
+  const handleChangeFirstName = (event) => setFirstName(event.target.value);
+  const handleChangeLastName = (event) => setLastName(event.target.value);
+  const HandleEditProfile = () => {
+    setEditProfile(false);
+    setFirstName('');
+    setLastName('');
+  };
 
-  const user = (state) => state.userReducer;
-  // const user = (state) => state.authReducer;
-  const currentUser = useSelector(user);
-  console.log(currentUser); // {isAuth, token, user} for userReducer && authReducer
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (firstName && lastName !== '') {
+    if (firstName && lastName) {
       dispatch(newProfile(firstName, lastName));
+      setEditProfile(false);
     }
     setChangeProfile(true);
   };
+
+  // const user = (state) => state.userReducer;
+  const user = (state) => state.authReducer;
+  const currentUser = useSelector(user);
+  console.log(currentUser); // {isAuth, token, user} for userReducer && authReducer
 
   return (
     <>
@@ -47,8 +56,8 @@ export default function User() {
               <input
                 type="text"
                 id="firstName"
-                onChange={(event) => setFirstName(event.target.value)}
                 value={firstName}
+                onChange={handleChangeFirstName}
               />
               {changeProfile && !firstName && (
                 <small className="input-error">First name is required</small>
@@ -59,8 +68,8 @@ export default function User() {
               <input
                 type="lastName"
                 id="lastName"
-                onChange={(event) => setLastName(event.target.value)}
                 value={lastName}
+                onChange={handleChangeLastName}
               />
               {changeProfile && !lastName && (
                 <small className="input-error">Last name is required</small>
@@ -75,11 +84,7 @@ export default function User() {
               className="cancel-button"
               type="button"
               value="Cancel"
-              onClick={() => {
-                setFirstName('');
-                setLastName('');
-                setEditProfile(false);
-              }}
+              onClick={HandleEditProfile}
             />
           </form>
         </section>

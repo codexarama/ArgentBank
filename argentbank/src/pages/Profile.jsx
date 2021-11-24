@@ -17,6 +17,7 @@ export default function Profile() {
   }, []);
 
   const [editProfile, setEditProfile] = useState(false);
+  const HandleEditProfile = () => setEditProfile(true)
 
   return (
     <main className="profile bg-dark">
@@ -30,7 +31,7 @@ export default function Profile() {
             className="edit-button"
             type="submit"
             value="Edit Name"
-            onClick={() => setEditProfile(true)}
+            onClick={HandleEditProfile}
           />
           <h2 className="sr-only">Accounts</h2>
           {accountData.map((item) => (
