@@ -5,6 +5,11 @@ import { editSuccess, editFailure } from '../actions/userActions';
 
 import { token } from '../../utils/storage';
 
+import {
+  setValueToSessionStorage,
+  setValueToLocalStorage,
+} from '../../utils/storage';
+
 /**
  * PUT NEW USER NAME in API
  * @param   {string}  firstName   [new user firstName]
@@ -20,10 +25,22 @@ export function newProfile(firstName, lastName) {
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
+        sessionStorage.length !== 0
+          ? setValueToSessionStorage(
+              'USER',
+              `${response.data.body.firstName} ${response.data.body.lastName}`
+            )
+          : setValueToLocalStorage(
+              'USER',
+              `${response.data.body.firstName} ${response.data.body.lastName}`
+            );
+
+        window.location.reload();
+
         dispatch(
           editSuccess(
-            response.data.body.user.firstName,
-            response.data.body.user.lastName
+            firstName,
+            lastName
           )
         );
       })

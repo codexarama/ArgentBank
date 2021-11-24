@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import Welcome from '../components/Welcome';
-import User from '../components/UpdateProfile';
+import UpdateProfile from '../components/UpdateProfile';
 import { accountData } from '../services/data';
 import Account from '../components/Account';
 import { user } from '../utils/storage';
-// import { Redirect } from 'react-router';
 
 /**
  *
@@ -22,9 +21,8 @@ export default function Profile() {
   return (
     <main className="profile bg-dark">
       {editProfile ? (
-        <User />
+        <UpdateProfile setEditProfile={setEditProfile} editProfile={editProfile}/>
       ) : (
-        // <Redirect to="profile/update" />
         <>
           <Welcome fullName={user} />
           <input
