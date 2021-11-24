@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { getValueFromSessionStorage } from '../utils/sessionStorage';
-import { getValueFromLocalStorage } from '../utils/localStorage';
+import { token } from '../utils/storage';
 
 /**
  * Secure the account access (profile page) :
@@ -10,14 +9,12 @@ import { getValueFromLocalStorage } from '../utils/localStorage';
  * @returns props
  */
 export default function PrivateRoute({ component: Component, ...rest }) {
-  let hasToken =
-    getValueFromLocalStorage('USER') || getValueFromSessionStorage('USER');
 
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (!hasToken) {
+        if (!token) {
           return <Redirect to="/" />;
         }
         return <Component {...props} />;
