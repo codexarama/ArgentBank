@@ -35,20 +35,16 @@ export function login(email, password, rememberMe) {
         if (rememberMe) {
           setValueToLocalStorage('TOKEN', response.data.body.token);
           setValueToLocalStorage(
-            'USER',
-            response.data.body.user.firstName +
-              ' ' +
-              response.data.body.user.lastName
+            'USER', // GET user RETURN FROM BACKEND : server > services > userService.js > l.68
+            `${response.data.body.user.firstName} ${response.data.body.user.lastName}`
           );
         }
 
         if (!rememberMe) {
           setValueToSessionStorage('TOKEN', response.data.body.token);
           setValueToSessionStorage(
-            'USER',
-            response.data.body.user.firstName +
-              ' ' +
-              response.data.body.user.lastName
+            'USER', // GET user RETURN FROM BACKEND : server > services > userService.js > l.68
+            `${response.data.body.user.firstName} ${response.data.body.user.lastName}`
           );
         }
 

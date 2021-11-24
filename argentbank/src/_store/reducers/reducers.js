@@ -22,14 +22,14 @@ const initialState = user
  * Authentication reducer
  *
  * @param   {object}   state          initialState
- * @param   {object}   initialstate   token:  null || JWT
- * @param   {object}   initialstate   user:   null || user data
+ * @param   {string}   initialstate   token:  null || JWT
+ * @param   {string}   initialstate   user:   null || user data
  * @param   {boolean}  initialstate   isAuth: boolean
  *
  * @param   {object}   action         action
  *
- * @return  {object}   token          new state
- * @return  {object}   user           new state
+ * @return  {string}   token          new state
+ * @return  {string}   user           new state
  * @return  {boolean}  isAuth         new state
  */
 export const authReducer = (state = initialState, action) => {
@@ -81,8 +81,6 @@ export const userReducer = (state = initialState, action) => {
         isAuth: true,
         token: state.token,
         user: state.user,
-        // firstName: payload.firstName,
-        // lastName: payload.lastName
         firstName: payload.firstName ? payload.firstName : state.firstName,
         lastName: payload.lastName ? payload.lastName : state.lastName,
       };

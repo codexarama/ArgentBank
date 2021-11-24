@@ -64,6 +64,7 @@ module.exports.loginUser = async serviceData => {
       { expiresIn: '1d' }
     )
 
+    // ADD RETURN user
     return { token, user }
   } catch (error) {
     console.error('Error in userService.js', error)

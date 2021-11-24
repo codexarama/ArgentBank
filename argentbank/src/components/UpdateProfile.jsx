@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { useDispatch } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { newProfile } from '../_store/middlewares/userMiddleware';
@@ -10,12 +9,11 @@ import Profile from '../pages/Profile';
  *
  * @returns
  */
-export default function User() {
+export default function User(props) {
   useEffect(() => {
     document.title = 'Argent Bank | Update Profile';
   }, []);
 
-  const [editProfile, setEditProfile] = useState(true);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [changeProfile, setChangeProfile] = useState(false);
@@ -23,7 +21,7 @@ export default function User() {
   const handleChangeFirstName = (event) => setFirstName(event.target.value);
   const handleChangeLastName = (event) => setLastName(event.target.value);
   const HandleEditProfile = () => {
-    setEditProfile(false);
+    props.setEditProfile(false);
     setFirstName('');
     setLastName('');
   };
@@ -34,7 +32,6 @@ export default function User() {
     event.preventDefault();
     if (firstName && lastName) {
       dispatch(newProfile(firstName, lastName));
-      setEditProfile(false);
     }
     setChangeProfile(true);
   };
@@ -46,7 +43,7 @@ export default function User() {
 
   return (
     <>
-      {editProfile ? (
+      {props.editProfile ? (
         <section className="update-profile-content">
           <i className="fa fa-user-circle update-profile-icon"></i>
           <h1>Update profile</h1>
