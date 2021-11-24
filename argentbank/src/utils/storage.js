@@ -1,4 +1,4 @@
-// LOCAL STORAGE
+// LOCAL STORAGE methods
 export const getValueFromLocalStorage = (key) => localStorage.getItem(key);
 export const setValueToLocalStorage = (key, value) =>
   localStorage.setItem(key, value);
@@ -6,7 +6,7 @@ export const removeValueFromLocalStorage = (key) =>
   localStorage.removeItem(key);
 export const clearLocalStorage = () => localStorage.clear();
 
-// SESSION STORAGE
+// SESSION STORAGE methods
 export const getValueFromSessionStorage = (key) => sessionStorage.getItem(key);
 export const setValueToSessionStorage = (key, value) =>
   sessionStorage.setItem(key, value);
@@ -14,10 +14,8 @@ export const removeValueFromSessionStorage = (key) =>
   sessionStorage.removeItem(key);
 export const clearSessionStorage = () => sessionStorage.clear();
 
-// DATA FROM LOCAL || SESSION STORAGE
+// get DATA FROM LOCAL || SESSION STORAGE
 export const token =
-  getValueFromSessionStorage('TOKEN') || getValueFromLocalStorage('TOKEN');
+  getValueFromLocalStorage('TOKEN') || getValueFromSessionStorage('TOKEN');
 export const user =
-  getValueFromSessionStorage('USER') || getValueFromLocalStorage('USER');
-// export const firstName = user.split(' ')[0];
-// export const lastName = user.split(' ')[1];
+  getValueFromLocalStorage('USER') || getValueFromSessionStorage('USER');
