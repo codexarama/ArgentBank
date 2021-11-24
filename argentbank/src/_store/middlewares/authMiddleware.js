@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { loginURL } from '../../utils/apiUrls';
 
 import {
   loginSuccess,
@@ -8,16 +9,10 @@ import {
 
 import {
   setValueToSessionStorage,
-  clearSessionStorage,
-} from '../../utils/sessionStorage';
-
-import {
   setValueToLocalStorage,
   clearLocalStorage,
-} from '../../utils/localStorage';
-
-const baseURL = 'http://localhost:3001/api/v1/user';
-// const baseURL = `${process.env.REACT_APP_API_URL}`;
+  clearSessionStorage,
+} from '../../utils/storage';
 
 /**
  * LOGIN SERVICE
@@ -30,16 +25,11 @@ const baseURL = 'http://localhost:3001/api/v1/user';
 export function login(email, password, rememberMe) {
   return (dispatch) => {
     axios
-      .post(`${baseURL}/login`, {
+      .post(loginURL, {
         email,
         password,
       })
       .then((response) => {
-
-        // rememberMe // NE RENVOIE QUE LA 1e OCCURRENCE
-        // ? (setValueToLocalStorage('TOKEN', response.data.body.token) && setValueToLocalStorage('USER', response.data.body.user.firstName))
-        // : (setValueToSessionStorage('TOKEN', response.data.body.token) && setValueToSessionStorage('USER', response.data.body.user.firstName));
-
         dispatch(loginSuccess(response.data.body));
 
         if (rememberMe) {
@@ -78,8 +68,10 @@ export function login(email, password, rememberMe) {
 export function logout() {
   return (dispatch) => {
     dispatch(logoutSuccess());
+
     clearSessionStorage();
     clearLocalStorage();
+
     window.location.replace(`/`);
   };
 }
