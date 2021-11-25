@@ -9,7 +9,6 @@ import { token } from '../utils/storage';
  * @returns props
  */
 export default function PrivateRoute({ component: Component, ...rest }) {
-
   return (
     <Route
       {...rest}
