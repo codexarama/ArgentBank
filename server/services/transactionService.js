@@ -12,7 +12,7 @@ module.exports.createTransaction = async serviceData => {
 
     return result
   } catch (error) {
-    console.error('Error in userService.js', error)
+    console.error('Error in transactionService.js', error)
     throw new Error(error)
   }
 }
