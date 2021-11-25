@@ -39,9 +39,7 @@ export const authReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        isAuth: true,
-        token: payload.token,
-        user: payload.user,
+        initialState,
       };
     case LOGIN_FAILURE:
       return {
@@ -78,9 +76,7 @@ export const userReducer = (state = initialState, action) => {
     case EDIT_SUCCESS:
       return {
         ...state,
-        isAuth: true,
-        token: state.token,
-        user: state.user,
+        initialState,
         firstName: payload.firstName ? payload.firstName : state.firstName,
         lastName: payload.lastName ? payload.lastName : state.lastName,
       };
@@ -88,9 +84,7 @@ export const userReducer = (state = initialState, action) => {
     case EDIT_FAILURE:
       return {
         ...state,
-        isAuth: true,
-        token: state.token,
-        user: state.user,
+        initialState,
         error: payload.error,
       };
 

@@ -7,8 +7,8 @@ import Account from '../components/Account';
 import { user } from '../utils/storage';
 
 /**
- *
- * @returns
+ * Render the Profile component
+ * @returns {Reactnode} jsx injected in DOM
  */
 export default function Profile() {
   useEffect(() => {
@@ -21,8 +21,10 @@ export default function Profile() {
   return (
     <main className="profile bg-dark">
       {editProfile ? (
+        <>
+        <h2 className="update-profile-name" >{user}</h2>
         <UpdateProfile setEditProfile={setEditProfile} editProfile={editProfile}/>
-      ) : (
+      </>) : (
         <>
           <Welcome fullName={user} />
           <input

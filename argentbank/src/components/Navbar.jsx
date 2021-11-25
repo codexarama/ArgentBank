@@ -3,20 +3,14 @@ import { Link } from 'react-router-dom';
 
 import { user } from '../utils/storage';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../_store/middlewares/authMiddleware';
 
 /**
- *
- * @returns
+ * Render the Navbar component
+ * @returns {Reactnode} jsx injected in DOM
  */
-export default function Navbar() {
-  // const user = useSelector((state) => state.authReducer);
-
-  // const isLogged = (state) => state.userReducer;
-  // const isLogged = (state) => state.authReducer;
-  // const user = useSelector(isLogged);
-
+ export default function Navbar() {
   // console.log(user);
 
   const dispatch = useDispatch();
@@ -46,7 +40,6 @@ export default function Navbar() {
             <Link className="main-nav-item" to="/profile">
               <i className="fa fa-user-circle sign-in-icon"></i>
               <span>{user}</span>
-              {/* <span>{user.firstName}</span> */}
             </Link>
           </li>
           <li className="main-nav-item">

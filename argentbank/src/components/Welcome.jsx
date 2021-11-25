@@ -11,7 +11,7 @@
       <h1>
         Welcome back
         <br />
-        {fullName}!
+        {fullName} !
       </h1>
     </header>
   );

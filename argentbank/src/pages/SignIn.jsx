@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../_store/middlewares/authMiddleware';
 
 /**
- *
- * @returns
+ * Render the SignIn component
+ * @returns {Reactnode} jsx injected in DOM
  */
-export default function SignIn() {
+ export default function SignIn() {
   useEffect(() => {
     document.title = 'Argent Bank | Sign In';
   }, []);
