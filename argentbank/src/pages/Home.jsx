@@ -5,8 +5,8 @@ import Hero from '../components/Hero';
 import Feature from '../components/Feature';
 
 /**
- * 
- * @returns 
+ * Render the Home component
+ * @returns {Reactnode} jsx injected in DOM
  */
 export default function Home() {
   useEffect(() => {

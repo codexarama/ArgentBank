@@ -6,8 +6,9 @@ import { newProfile } from '../_store/middlewares/userMiddleware';
 import Profile from '../pages/Profile';
 
 /**
- *
- * @returns
+ * Render the UpdateProfile component
+ * @param   {object} props
+ * @returns {Reactnode} jsx injected in DOM
  */
 export default function User(props) {
   useEffect(() => {
