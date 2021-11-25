@@ -174,7 +174,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* SIGN IN PAGE */
+/* SIGN IN / EDIT PROFILE FORM */
 .sign-in-button,
 .update-profile-button,
 .cancel-button {
@@ -215,6 +215,16 @@ body {
   margin-right: 0.5rem;
 }
 
+.update-profile-name {
+  margin-top: 0;
+  color: white;
+  opacity: 0.5;
+}
+
+.update-profile-icon {
+  margin-right: 0;
+}
+
 .input-remember {
   display: flex;
 }
@@ -252,7 +262,7 @@ body {
   width: 300px;
 }
 
-.input-alrt--msg {
+.input-alert--msg {
   line-height: 3rem;
   color: white;
 }
