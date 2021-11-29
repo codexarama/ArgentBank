@@ -4,9 +4,27 @@ const transactionController = require('../controllers/transactionController');
 const tokenValidation = require('../middleware/tokenValidation');
 
 router.post(
-  '/transaction',
+  '/create',
   tokenValidation.validateToken,
   transactionController.createTransaction
+);
+
+router.get(
+  '/transaction:current',
+  tokenValidation.validateToken,
+  transactionController.getCurrentMonthTransactions
+);
+
+router.get(
+  '/transaction:id',
+  tokenValidation.validateToken,
+  transactionController.getTransactionById
+);
+
+router.put(
+  '/transaction:id',
+  tokenValidation.validateToken,
+  transactionController.updateTransactionEditableSettings
 );
 
 module.exports = router;
