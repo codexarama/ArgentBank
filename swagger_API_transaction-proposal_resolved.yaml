@@ -15,7 +15,7 @@ basePath: /codexarama3/Argent_Bank_Transactions/1.0.0
 schemes:
 - https
 paths:
-  /transaction/create:
+  /transaction/:
     get:
       tags:
       - Transaction Module
@@ -35,7 +35,7 @@ paths:
         "200":
           description: Account current month transactions successfully retrieved
           schema:
-            $ref: '#/definitions/inline_response_200_1'
+            $ref: '#/definitions/inline_response_200'
         "400":
           description: Invalid values
           schema:
@@ -101,18 +101,18 @@ paths:
         required: true
         type: string
       - in: body
-        name: informations
-        description: selected transaction informations
+        name: transaction overview
+        description: selected transaction all informations
         required: true
         schema:
-          $ref: '#/definitions/informations'
+          $ref: '#/definitions/TransactionOverview'
       security:
       - Bearer: []
       responses:
         "200":
-          description: Selected transaction successfully retrieved
+          description: Selected transaction informations successfully retrieved
           schema:
-            $ref: '#/definitions/inline_response_200_2'
+            $ref: '#/definitions/ApiResponse'
         "401":
           description: Unauthorized
           schema:
@@ -248,7 +248,7 @@ definitions:
   inline_response_200_body:
     type: object
     properties:
-      transactions:
+      transaction:
         type: array
         description: user account current month transactions
         items:
@@ -258,30 +258,5 @@ definitions:
     properties:
       ApiResponse:
         $ref: '#/definitions/ApiResponse'
-  informations:
-    type: object
-    properties:
-      type: {}
-      description: {}
-  inline_response_200_1_body:
-    type: object
-    properties:
-      transactions:
-        type: array
-        description: user account current month transactions
-        items:
-          $ref: '#/definitions/TransactionInformations'
-  inline_response_200_1:
-    type: object
-    properties:
-      ApiResponse:
-        $ref: '#/definitions/ApiResponse'
       body:
-        $ref: '#/definitions/inline_response_200_1_body'
-  inline_response_200_2:
-    type: object
-    properties:
-      ApiResponse:
-        $ref: '#/definitions/ApiResponse'
-      body:
-        $ref: '#/definitions/TransactionOverview'
+        $ref: '#/definitions/inline_response_200_body'

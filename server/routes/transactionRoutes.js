@@ -4,7 +4,7 @@ const transactionController = require('../controllers/transactionController');
 const tokenValidation = require('../middleware/tokenValidation');
 
 router.post(
-  '/create',
+  '/',
   tokenValidation.validateToken,
   transactionController.createTransaction
 );
