@@ -10,19 +10,19 @@ router.post(
 );
 
 router.get(
-  '/transaction:current',
+  '/' + '',
   tokenValidation.validateToken,
   transactionController.getCurrentMonthTransactions
 );
 
 router.get(
-  '/transaction:id',
+  '/:id',
   tokenValidation.validateToken,
-  transactionController.getTransactionById
+  transactionController.getSingleTransaction
 );
 
 router.put(
-  '/transaction:id',
+  '/:id',
   tokenValidation.validateToken,
   transactionController.updateTransactionEditableSettings
 );

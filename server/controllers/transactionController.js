@@ -35,17 +35,17 @@ module.exports.getCurrentMonthTransactions = async (req, res) => {
   return res.status(response.status).send(response)
 }
 
-module.exports.getTransactionById = async (req, res) => {
+module.exports.getSingleTransaction = async (req, res) => {
   let response = {}
 
   try {
-    const responseFromService = await userService.getTransactionById(req)
+    const responseFromService = await userService.getSingleTransaction(req)
     response.status = 200
     response.message = 'Successfully got selected transaction data'
     response.body = responseFromService
   } catch (error) {
     console.log('Something went wrong in transactionController.js')
-    response.status = 400
+    response.status = 404
     response.message = error.message
   }
 

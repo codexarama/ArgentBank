@@ -1,8 +1,8 @@
 ---
-swagger: '1.0'
+swagger: "1.0"
 info:
   description: Contains all available API endpoints for the transactions functionality
-  version: '4'
+  version: "5"
   title: Argent Bank API documentation proposal
   termsOfService: http://swagger.io/terms/
   contact:
@@ -13,166 +13,156 @@ info:
 host: virtserver.swaggerhub.com
 basePath: /codexarama3/Argent_Bank_Transactions/1.0.0
 schemes:
-  - https
+- https
 paths:
-  /transaction:
-    post:
-      tags:
-        - Transaction Module
-      summary: create a transaction
-      description: API for fetching all user account new transactions
-      produces:
-        - application/json
-      parameters:
-        - name: Authorization
-          in: header
-          location: /transaction/{transactionId}
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-        - name: currentMonth
-          in: path
-          description: transactions from start to end of the current month
-          required: true
-          type: string
-      security:
-        - Bearer: []
-      responses:
-        '201':
-          description: new transactions successfully created
-          schema:
-            $ref: '#/definitions/inline_response_201'
-        '400':
-          description: Invalid values
-          schema:
-            $ref: '#/definitions/ApiResponse'
-        '401':
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/ApiResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ApiResponse'
-  /transaction/{current}:
+  /transaction/create:
     get:
       tags:
-        - Transaction Module
+      - Transaction Module
       summary: account Dashboard
       description: API for fetching all user account current mounth transactions
       produces:
-        - application/json
+      - application/json
       parameters:
-        - name: Authorization
-          in: header
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-        - name: currentMonth
-          in: path
-          description: transactions from start to end of the current month
-          required: true
-          type: string
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        type: string
       security:
-        - Bearer: []
+      - Bearer: []
       responses:
-        '200':
+        "200":
           description: Account current month transactions successfully retrieved
           schema:
-            $ref: '#/definitions/inline_response_200'
-        '400':
+            $ref: '#/definitions/inline_response_200_1'
+        "400":
           description: Invalid values
           schema:
             $ref: '#/definitions/ApiResponse'
-        '401':
+        "401":
           description: Unauthorized
           schema:
             $ref: '#/definitions/ApiResponse'
-        '500':
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    post:
+      tags:
+      - Transaction Module
+      summary: create a transaction
+      description: API for creating user account new transaction
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "201":
+          description: new transaction successfully created
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "400":
+          description: Invalid values
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "500":
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ApiResponse'
   /transaction/{transactionId}:
     get:
       tags:
-        - Transaction Module
+      - Transaction Module
       summary: Transaction settings
-      description: API for fetching informations of a selected transaction by its id
+      description: API for fetching informations of a selected transaction
       operationId: getTransactionId
       produces:
-        - application/json
+      - application/json
       parameters:
-        - name: Autorization
-          in: header
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-        - name: transactionId
-          in: path
-          description: Transaction identifier
-          required: true
-          type: string
-        - in: body
-          name: informations
-          description: selected transaction informations
-          required: true
-          schema:
-            $ref: '#/definitions/informations'
+      - name: Autorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        type: string
+      - name: transactionId
+        in: path
+        description: Transaction identifier
+        required: true
+        type: string
+      - in: body
+        name: informations
+        description: selected transaction informations
+        required: true
+        schema:
+          $ref: '#/definitions/informations'
       security:
-        - Bearer: []
+      - Bearer: []
       responses:
-        '200':
-          description: Selected transaction settings successfully retrieved
-        '400':
-          description: Invalid values
+        "200":
+          description: Selected transaction successfully retrieved
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '401':
+            $ref: '#/definitions/inline_response_200_2'
+        "401":
           description: Unauthorized
           schema:
             $ref: '#/definitions/ApiResponse'
-        '500':
+        "404":
+          description: Transaction not found
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "500":
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ApiResponse'
     put:
       tags:
-        - Transaction Module
+      - Transaction Module
       summary: Update informations
       description: API for updating the selected transaction editable informations
       operationId: getTransactionId
       consumes:
-        - application/json
+      - application/json
       produces:
-        - application/json
+      - application/json
       parameters:
-        - name: Autorization
-          in: header
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-        - in: body
-          name: edit
-          description: Update editable informations
-          required: true
-          schema:
-            $ref: '#/definitions/TransactionEdit'
+      - name: Autorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        type: string
+      - in: body
+        name: edit
+        description: Update editable informations
+        required: true
+        schema:
+          $ref: '#/definitions/TransactionEdit'
       security:
-        - Bearer: []
+      - Bearer: []
       responses:
-        '200':
+        "200":
           description: Selected transaction details successfully updated
-        '204':
+        "204":
           description: No content
-        '400':
+        "400":
           description: Invalid values
           schema:
             $ref: '#/definitions/ApiResponse'
-        '401':
+        "401":
           description: Unauthorized
           schema:
             $ref: '#/definitions/ApiResponse'
-        '500':
+        "500":
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ApiResponse'
@@ -188,16 +178,16 @@ definitions:
         type: string
   TransactionOverview:
     allOf:
-      - $ref: '#/definitions/TransactionInformations'
-      - $ref: '#/definitions/TransactionEdit'
+    - $ref: '#/definitions/TransactionInformations'
+    - $ref: '#/definitions/TransactionEdit'
   TransactionInformations:
     type: object
     required:
-      - amount
-      - date
-      - description
-      - id
-      - type
+    - amount
+    - date
+    - description
+    - id
+    - type
     properties:
       id:
         type: string
@@ -206,7 +196,7 @@ definitions:
       date:
         type: string
         format: date-time
-        example: 2016-08-29T09:12:33.001Z
+        example: 2016-08-29T09:12:33.001+0000
         description: transaction date
       description:
         type: string
@@ -221,18 +211,18 @@ definitions:
         type: string
         description: transaction type
         enum:
-          - debit card charges
-          - online payments
-          - check
-          - cash withdrawals
-          - deposits
-          - wire transfers
-          - loan payments
-          - bank fees
+        - debit card charges
+        - online payment
+        - check
+        - cash withdrawal
+        - deposit
+        - wire transfer
+        - loan payment
+        - bank fee
   TransactionEdit:
     type: object
     required:
-      - id
+    - id
     properties:
       id:
         type: string
@@ -242,15 +232,15 @@ definitions:
         type: string
         description: transaction category
         enum:
-          - none
-          - salary
-          - lodging
-          - assurance
-          - tax
-          - food
-          - transport
-          - saving
-          - solidarity
+        - none
+        - salary
+        - lodging
+        - assurance
+        - tax
+        - food
+        - transport
+        - saving
+        - solidarity
       notes:
         type: string
         example: dinner at the restaurant
@@ -268,10 +258,30 @@ definitions:
     properties:
       ApiResponse:
         $ref: '#/definitions/ApiResponse'
-      body:
-        $ref: '#/definitions/inline_response_200_body'
   informations:
     type: object
     properties:
       type: {}
       description: {}
+  inline_response_200_1_body:
+    type: object
+    properties:
+      transactions:
+        type: array
+        description: user account current month transactions
+        items:
+          $ref: '#/definitions/TransactionInformations'
+  inline_response_200_1:
+    type: object
+    properties:
+      ApiResponse:
+        $ref: '#/definitions/ApiResponse'
+      body:
+        $ref: '#/definitions/inline_response_200_1_body'
+  inline_response_200_2:
+    type: object
+    properties:
+      ApiResponse:
+        $ref: '#/definitions/ApiResponse'
+      body:
+        $ref: '#/definitions/TransactionOverview'
