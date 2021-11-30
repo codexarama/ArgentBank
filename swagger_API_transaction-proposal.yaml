@@ -1,0 +1,258 @@
+---
+swagger: "1.0"
+info:
+  description: Contains all available API endpoints for the transactions functionality
+  version: "5"
+  title: Argent Bank API documentation proposal
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: me@my-company.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: virtserver.swaggerhub.com
+basePath: /codexarama3/Argent_Bank_Transactions/1.0.0
+schemes:
+- https
+paths:
+  /transaction/:
+    get:
+      tags:
+      - Transaction Module
+      summary: account Dashboard
+      description: API for fetching all user account current mounth transactions
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Account current month transactions successfully retrieved
+          schema:
+            allOf:
+            - $ref: '#/definitions/ApiResponse'
+            - type: object
+              properties:
+                body:
+                  type: object
+                  properties:
+                    transaction:
+                      type: array
+                      description: user account current month transactions
+                      items:
+                        $ref: "#/definitions/TransactionInformations"
+        "400":
+          description: Invalid values
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    post:
+      tags:
+      - Transaction Module
+      summary: create a transaction
+      description: API for creating user account new transaction
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        type: string
+      security:
+      - Bearer: []
+      responses:
+        "201":
+          description: new transaction successfully created
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "400":
+          description: Invalid values
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse'
+  /transaction/{transactionId}:
+    get:
+      tags:
+      - Transaction Module
+      summary: Transaction settings
+      description: API for fetching informations of a selected transaction
+      operationId: getTransactionId
+      produces:
+      - application/json
+      parameters:
+      - name: Autorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        type: string
+      - name: transactionId
+        in: path
+        description: Transaction identifier
+        required: true
+        type: string
+      - in: body
+        name: transaction overview
+        description: selected transaction all informations
+        required: true
+        schema:
+          $ref: '#/definitions/TransactionOverview'
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Selected transaction informations successfully retrieved
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "404":
+          description: Transaction not found
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    put:
+      tags:
+      - Transaction Module
+      summary: Update informations
+      description: API for updating the selected transaction editable informations
+      operationId: getTransactionId
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Autorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        type: string
+      - in: body
+        name: edit
+        description: Update editable informations
+        required: true
+        schema:
+          $ref: '#/definitions/TransactionEdit'
+      security:
+      - Bearer: []
+      responses:
+        "200":
+          description: Selected transaction details successfully updated
+        "204":
+          description: No content
+        "400":
+          description: Invalid values
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse'
+definitions:
+  Bearer:
+    type: apiKey
+  ApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+  TransactionOverview:
+    allOf:
+    - $ref: '#/definitions/TransactionInformations'
+    - $ref: '#/definitions/TransactionEdit'
+  TransactionInformations:
+    type: object
+    required:
+    - amount
+    - date
+    - description
+    - id
+    - type
+    properties:
+      id:
+        type: string
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        description: autogenerated transaction id
+      date:
+        type: string
+        format: date-time
+        example: 2016-08-29T09:12:33.001+0000
+        description: transaction date
+      description:
+        type: string
+        example: Golden Sun Bakery
+        description: recipient name of the transaction
+      amount:
+        type: number
+        format: float
+        example: 5.0
+        description: transaction amount
+      type:
+        type: string
+        description: transaction type
+        enum:
+        - debit card charges
+        - online payment
+        - check
+        - cash withdrawal
+        - deposit
+        - wire transfer
+        - loan payment
+        - bank fee
+  TransactionEdit:
+    type: object
+    required:
+    - id
+    properties:
+      id:
+        type: string
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        description: autogenerated transaction id
+      category:
+        type: string
+        description: transaction category
+        enum:
+        - none
+        - salary
+        - lodging
+        - assurance
+        - tax
+        - food
+        - transport
+        - saving
+        - solidarity
+      notes:
+        type: string
+        example: dinner at the restaurant
+        description: text area to write notes about the transaction

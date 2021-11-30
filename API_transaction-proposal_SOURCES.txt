@@ -1,5 +1,0 @@
-// API code
-https://app.swaggerhub.com/apis/codexarama3/argent-bank_api_documentation_proposal/5
-
-// API visual dashboard
-https://app.swaggerhub.com/apis-docs/codexarama3/argent-bank_api_documentation_proposal/5#/Transaction%20Module/getTransactionId
