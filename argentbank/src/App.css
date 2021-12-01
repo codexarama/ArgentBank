@@ -1,4 +1,4 @@
-/* BASIS */
+/* HTML */
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9,9 +9,14 @@ html {
 
 /* BODY */
 body {
-  min-height: 100vh;
+  height: 100vh;
   margin: 0;
   display: flex;
+  flex-direction: column;
+}
+
+.bg-dark {
+  background-color: #12002b;
   flex-direction: column;
 }
 
@@ -19,13 +24,6 @@ body {
 .main {
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-
-.bg-dark {
-  height: 87vh;
-  background-color: #12002b;
-  flex-direction: column;
 }
 
 /* masquage accessible */
@@ -47,6 +45,7 @@ body {
 .main-nav {
   display: flex;
   justify-content: space-between;
+  background: white;
   align-items: center;
   padding: 5px 20px;
 }
@@ -62,16 +61,13 @@ body {
 }
 
 .main-nav-item {
+  width: max-content;
   display: flex;
   align-items: center;
   cursor: pointer;
   text-decoration: none;
   font-weight: 700;
 }
-
-/* .main-nav-item:hover {
-  text-decoration: underline;
-} */
 
 .main-nav-item:nth-of-type(2) {
   margin-left: 2rem;
@@ -174,7 +170,12 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* SIGN IN / EDIT PROFILE FORM */
+/* FORMS : SIGN IN + EDIT PROFILE */
+.sign-in {
+  flex-direction: column;
+  height: 80vh;
+}
+
 .sign-in-button,
 .update-profile-button,
 .cancel-button {
@@ -258,6 +259,7 @@ body {
 
 .input-alert {
   height: 3rem;
+  margin: 0 auto;
   background: #ff6060;
   width: 300px;
 }
@@ -267,23 +269,6 @@ body {
   color: white;
 }
 
-.footer {
-  flex-shrink: 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: #fff;
-  border-top: 2px solid #ccc;
-  padding: 2rem 0 1.5rem;
-}
-
-.footer-text {
-  margin: 0;
-  padding: 0;
-}
-
 /* PROFILE PAGE */
 .header {
   width: 100%;
@@ -291,9 +276,8 @@ body {
 }
 
 .profile {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
+  height: 80vh;
 }
 
 .account {
@@ -368,10 +352,39 @@ body {
   }
 }
 
+/* FOOTER */
+.footer {
+  flex-shrink: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  border-top: 2px solid #ccc;
+  padding: 2rem 0 1.5rem;
+}
+
+.footer-text {
+  margin: 0;
+  padding: 0;
+}
+
 /* ERROR PAGE */
 .error-msg {
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .home {
+    flex-wrap: wrap;
+  }
+
+  .features {
+    width: 100%;
+  }
 }

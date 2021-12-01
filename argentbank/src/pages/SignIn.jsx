@@ -12,6 +12,7 @@ import { login } from '../_store/middlewares/authMiddleware';
  export default function SignIn() {
   useEffect(() => {
     document.title = 'Argent Bank | Sign In';
+    document.body.classList.add('bg-dark')
   }, []);
 
   const [email, setEmail] = useState('');
@@ -37,7 +38,7 @@ import { login } from '../_store/middlewares/authMiddleware';
   console.log(authUser.error);
 
   return (
-    <main className="main bg-dark">
+    <main className="main sign-in">
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>

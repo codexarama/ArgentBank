@@ -23,32 +23,32 @@ users.forEach(user => {
     .catch(error => console.log(error))
 })
 
-// const transactionApi = 'http://localhost:3001/api/v1/transaction'
+const transactionApi = 'http://localhost:3001/api/v1/transaction'
 
-// const transactions = [
-//   {
-//     date: 'June 20th, 2020',
-//     description: 'Happy birthday',
-//     amount: '50.00',
-//     balance: '2082.79',
-//     type: 'wire transfer',
-//     category: 'none',
-//     note: ''
-//   },
-//   {
-//     date: 'June 20th, 2020',
-//     description: 'Golden Sun Backery',
-//     amount: '100.00',
-//     balance: '2032.79',
-//     type: 'debit card charge',
-//     category: 'food',
-//     note: ''
-//   }
-// ]
+const transactions = [
+  {
+    date: 'June 20th, 2020',
+    description: 'Happy birthday',
+    amount: '50.00',
+    balance: '2082.79',
+    type: 'wire transfer',
+    category: 'none',
+    note: ''
+  },
+  {
+    date: 'June 20th, 2020',
+    description: 'Golden Sun Backery',
+    amount: '100.00',
+    balance: '2032.79',
+    type: 'debit card charge',
+    category: 'food',
+    note: ''
+  }
+]
 
-// transactions.forEach(transaction => {
-//   axios
-//     .post(transactionApi, transaction)
-//     .then(response => console.log(response))
-//     .catch(error => console.log(error))
-// })
+transactions.forEach(transaction => {
+  axios
+    .post(transactionApi, transaction)
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
+})

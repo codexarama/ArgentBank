@@ -13,13 +13,14 @@ import { user } from '../utils/storage';
 export default function Profile() {
   useEffect(() => {
     document.title = 'Argent Bank | Profile';
+    document.body.classList.add('bg-dark')
   }, []);
 
   const [editProfile, setEditProfile] = useState(false);
   const HandleEditProfile = () => setEditProfile(true)
 
   return (
-    <main className="profile bg-dark">
+    <main className="main profile">
       {editProfile ? (
         <>
         <h2 className="update-profile-name" >{user}</h2>
