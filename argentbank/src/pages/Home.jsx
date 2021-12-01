@@ -11,12 +11,13 @@ import Feature from '../components/Feature';
 export default function Home() {
   useEffect(() => {
     document.title = "Argent Bank | Home";
+    document.body.classList.remove('bg-dark')
   }, []);
 
   return (
     <>
       <Hero />
-      <main className="main">
+      <main className="main home">
         {featureData.map((item) => (
           <Feature
             key={item.id}
