@@ -51,6 +51,8 @@ body {
 }
 
 .main-nav a {
+  display: flex;
+  align-items: center;
   font-weight: bold;
   text-decoration: none;
   color: #2c3e50;
@@ -63,15 +65,17 @@ body {
 .main-nav-item {
   width: max-content;
   display: flex;
-  align-items: center;
   cursor: pointer;
-  text-decoration: none;
   font-weight: 700;
 }
 
-.main-nav-item:nth-of-type(2) {
-  margin-left: 2rem;
+.main-nav-item li {
+  list-style: none;
   margin-right: 1rem;
+}
+
+.logged-user {
+  color: #42b983;
 }
 
 .main-nav-logo {
