@@ -78,7 +78,7 @@ import { login } from '../_store/middlewares/authMiddleware';
         </form>
       </section>
       <section className="input-alert">
-        {submitted && authUser.error && (
+        {submitted && email && password && authUser.error && (
           <small className="input-alert--msg">
             Wrong email or password, please check
           </small>
