@@ -96,17 +96,17 @@ l'API de ArgentBank fournit des données pour 2 utilisateurs
 
 ### Step 1 : Installing and launching back-end
 
-- Clone the back-end repository: `git clone https://github.com/codexarama/AmandineArias_13_02112021.git`
-- Move to this folder: `cd AmandineArias_13_02112021`
-- Install dependencies: `npm install`
-- Launch back-end on default port: `npm run dev:server`
-- Create minimal database: `npm run populate-db`
+- [ ] Clone the back-end repository: `git clone https://github.com/codexarama/AmandineArias_13_02112021.git`
+- [ ] Move to this folder: `cd AmandineArias_13_02112021`
+- [ ] Install dependencies: `npm install`
+- [ ] Launch back-end on default port: `npm run dev:server`
+- [ ] Create minimal database: `npm run populate-db`
 
 ### Step 2 : Installing and launching front-end
 
-- Move to this folder: `cd argentbank`
-- Install dependencies: `npm install`
-- Launch front-end on port 3000: `npm start`
+- [ ] Move to this folder: `cd argentbank`
+- [ ] Install dependencies: `npm install`
+- [ ] Launch front-end on port 3000: `npm start`
 
 ```bash
 Front-end is now rendered at URL http://localhost:3000
