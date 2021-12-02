@@ -110,6 +110,6 @@ l'API de ArgentBank fournit des données pour 2 utilisateurs
 
 ```bash
 Front-end is now rendered at URL http://localhost:3000
-ArgentBank API only contains data for users
+ArgentBank API only contains data for 2 users
 ```
 
