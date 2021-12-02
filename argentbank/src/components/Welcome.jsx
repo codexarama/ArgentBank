@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 /**
  * Render the Welcome component
  *
@@ -16,3 +18,10 @@
     </header>
   );
 }
+
+/**
+ * Welcome PROPTYPES
+ */
+ Welcome.propTypes = {
+  fullName: PropTypes.string.isRequired,
+};

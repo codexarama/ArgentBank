@@ -1,4 +1,6 @@
-const subtitle = ['No fees.', 'No minimum deposit.', 'High interest rates.'];
+import PropTypes from 'prop-types';
+
+const subtitles = ['No fees.', 'No minimum deposit.', 'High interest rates.'];
 
 /**
  * Render the Hero component
@@ -9,7 +11,7 @@ export default function Hero() {
     <div className="hero">
       <section className="hero-content">
         <h2 className="sr-only">Promoted Content</h2>
-        {subtitle.map((subtitle, index) => (
+        {subtitles.map((subtitle, index) => (
           <p key={index} className="subtitle">
             {subtitle}
           </p>
@@ -19,3 +21,11 @@ export default function Hero() {
     </div>
   );
 }
+
+/**
+ * Hero PROPTYPES
+ */
+Hero.propTypes = {
+  index: PropTypes.number,
+  subtitle: PropTypes.string,
+};
