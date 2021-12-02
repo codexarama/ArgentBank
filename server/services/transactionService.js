@@ -17,22 +17,9 @@ module.exports.createTransaction = async (serviceData) => {
   }
 };
 
-module.exports.getCurrentMonthTransactions = async (serviceData) => {
+module.exports.getCurrentMonthTransactions = async () => {
   try {
-    // const transactions = await Transaction.find({
-    //   id: serviceData.id,
-    //   amount: serviceData.amount,
-    //   description: serviceData.description,
-    //   balance: serviceData.balance,
-    //   type: serviceData.type,
-    //   category: serviceData.category,
-    //   note: serviceData.note,
-    // });
-
-    // POSSIBLE ???
-    const transactions = await Transaction.find((items) => {
-      items;
-    });
+    const transactions = await Transaction.find();
 
     if (!transactions) {
       throw new Error('Transaction not found!');
@@ -63,6 +50,7 @@ module.exports.getSingleTransaction = async serviceData => {
 module.exports.updateTransactionEditableSettings = async (serviceData) => {
   try {
     const transaction = await Transaction.findOneAndUpdate(
+      { id: serviceData.id },
       {
         category: serviceData.body.category,
         note: serviceData.body.note,
