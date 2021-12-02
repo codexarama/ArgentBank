@@ -24,6 +24,9 @@ import { login } from '../_store/middlewares/authMiddleware';
   const handleChangePassword = (event) => setPassword(event.target.value)
   const handleChangeRememberMe = () => setRememberMe(!rememberMe)
 
+  const noEmail = submitted && !email
+  const noPassword = submitted && !password
+
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -36,6 +39,7 @@ import { login } from '../_store/middlewares/authMiddleware';
   const authUser = useSelector(auth);
   console.log(authUser);
   console.log(authUser.error);
+  const wrongEntries = submitted && authUser.error && (email && password)
 
   return (
     <main className="main sign-in">
@@ -52,7 +56,8 @@ import { login } from '../_store/middlewares/authMiddleware';
               onChange={handleChangeEmail}
               autoComplete="username"
             />
-            {submitted && !email && <small>Email is required</small>}
+            {noEmail && <small>Email is required</small>}
+            {/* {submitted && !email && <small>Email is required</small>} */}
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
@@ -63,7 +68,8 @@ import { login } from '../_store/middlewares/authMiddleware';
               onChange={handleChangePassword}
               autoComplete="current-password"
             />
-            {submitted && !password && <small>Password is required</small>}
+            {noPassword && <small>Password is required</small>}
+            {/* {submitted && !password && <small>Password is required</small>} */}
           </div>
           <div className="input-remember">
             <input
@@ -78,7 +84,8 @@ import { login } from '../_store/middlewares/authMiddleware';
         </form>
       </section>
       <section className="input-alert">
-        {submitted && email && password && authUser.error && (
+        {wrongEntries && (
+        // {submitted && email && password && authUser.error && (
           <small className="input-alert--msg">
             Wrong email or password, please check
           </small>
