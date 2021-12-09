@@ -92,6 +92,7 @@ l'API de ArgentBank fournit des données pour 2 utilisateurs
 *  [redux/toolkit](https://redux-toolkit.js.org/introduction/getting-started) (version 1.6.2)
 *  [redux-thunk](https://redux.js.org/usage/writing-logic-thunks) (version 2.4.0)
 *  [axios](https://www.npmjs.com/package/axios) (version 0.23.0)
+
 *  [prop-types](https://www.npmjs.com/package/prop-types) (version 15.7.2)
 
 ### Step 1 : Installing and launching back-end
