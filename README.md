@@ -29,7 +29,7 @@ Utilisez une API pour une application bancaire
 
     REACT
 
-## Installation 
+## Installation
 
 ### Editeur recommandé
 
@@ -43,12 +43,12 @@ Utilisez une API pour une application bancaire
 
 ### Dépendances
 
-*  [react-router-dom](https://reactrouter.com/web/guides/quick-start) (version 5.3.0) 
-*  [Redux](https://redux.js.org/introduction/getting-started) (version 5.3.0) 
-*  [react-redux](https://react-redux.js.org/introduction/getting-started) (version 7.2.5)  
+*  [react-router-dom](https://reactrouter.com/web/guides/quick-start) (version 5.3.0)
+*  [Redux](https://redux.js.org/introduction/getting-started) (version 5.3.0)
+*  [react-redux](https://react-redux.js.org/introduction/getting-started) (version 7.2.5)
 *  [redux/toolkit](https://redux-toolkit.js.org/introduction/getting-started) (version 1.6.2)
 *  [redux-thunk](https://redux.js.org/usage/writing-logic-thunks) (version 2.4.0)
-*  [axios](https://www.npmjs.com/package/axios) (version 0.23.0) 
+*  [axios](https://www.npmjs.com/package/axios) (version 0.23.0)
 *  [prop-types](https://www.npmjs.com/package/prop-types) (version 15.7.2)
 
 ### Etape 1 : Lancement du back-end
@@ -86,12 +86,13 @@ l'API de ArgentBank fournit des données pour 2 utilisateurs
 
 ### Dependances
 
-*  [react-router-dom](https://reactrouter.com/web/guides/quick-start) (version 5.3.0) 
-*  [Redux](https://redux.js.org/introduction/getting-started) (version 5.3.0) 
-*  [react-redux](https://react-redux.js.org/introduction/getting-started) (version 7.2.5)  
+*  [react-router-dom](https://reactrouter.com/web/guides/quick-start) (version 5.3.0)
+*  [Redux](https://redux.js.org/introduction/getting-started) (version 5.3.0)
+*  [react-redux](https://react-redux.js.org/introduction/getting-started) (version 7.2.5)
 *  [redux/toolkit](https://redux-toolkit.js.org/introduction/getting-started) (version 1.6.2)
 *  [redux-thunk](https://redux.js.org/usage/writing-logic-thunks) (version 2.4.0)
-*  [axios](https://www.npmjs.com/package/axios) (version 0.23.0) 
+*  [axios](https://www.npmjs.com/package/axios) (version 0.23.0)
+
 *  [prop-types](https://www.npmjs.com/package/prop-types) (version 15.7.2)
 
 ### Step 1 : Installing and launching back-end
@@ -112,4 +113,3 @@ l'API de ArgentBank fournit des données pour 2 utilisateurs
 Front-end is now rendered at URL http://localhost:3000
 ArgentBank API only contains data for 2 users
 ```
-

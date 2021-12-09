@@ -6,17 +6,16 @@ import {
   EDIT_FAILURE,
 } from '../actions/_types';
 
-import { token, user } from '../../utils/storage';
+import { user } from '../../utils/storage';
 
 const initialState = user
   ? {
       isAuth: true,
-      token,
       user,
       firstName: user.split(' ')[0],
       lastName: user.split(' ')[1],
     }
-  : { isAuth: false, token: null, user: null, firstName: '', lastName: '' };
+  : { isAuth: false, user: null, firstName: '', lastName: '' };
 
 /**
  * Authentication reducer
@@ -39,18 +38,21 @@ export const authReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        initialState,
+        isAuth: true,
+        user: payload.user
       };
     case LOGIN_FAILURE:
       return {
         ...state,
+        isAuth: false,
         user: null,
         error: payload.error,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        initialState,
+        isAuth: false,
+        user: null
       };
     default:
       return state;
@@ -76,7 +78,6 @@ export const userReducer = (state = initialState, action) => {
     case EDIT_SUCCESS:
       return {
         ...state,
-        initialState,
         firstName: payload.firstName ? payload.firstName : state.firstName,
         lastName: payload.lastName ? payload.lastName : state.lastName,
       };
@@ -84,14 +85,16 @@ export const userReducer = (state = initialState, action) => {
     case EDIT_FAILURE:
       return {
         ...state,
-        initialState,
+        isAuth: false,
+        user: null,
         error: payload.error,
       };
 
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        initialState,
+        isAuth: false,
+        user: null
       };
     default:
       return state;

@@ -8,16 +8,23 @@ import { token } from '../utils/storage';
  * @param {props} param
  * @returns props
  */
-export default function PrivateRoute({ component: Component, ...rest }) {
+
+export default function PrivateRoute({ children, ...rest }) {
   return (
-    <Route
-      {...rest}
-      render={(props) => {
-        if (!token) {
-          return <Redirect to="/" />;
+      <Route
+        {...rest}
+        render={({ location }) =>
+          token ? (
+            children
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/login",
+                state: { from: location }
+              }}
+            />
+          )
         }
-        return <Component {...props} />;
-      }}
-    />
-  );
+      />
+    );
 }

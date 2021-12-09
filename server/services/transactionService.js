@@ -3,9 +3,12 @@ const Transaction = require('../database/models/transactionModel');
 module.exports.createTransaction = async (serviceData) => {
   try {
     const newTransaction = new Transaction({
-      amount: serviceData.amount,
       description: serviceData.description,
-      balance: serviceData.balance,
+      amount: serviceData.amount,
+      balance: serviceData.balance += serviceData.amount,
+      type: serviceData.type,
+      category: serviceData.category,
+      note: serviceData.note
     });
 
     let result = await newTransaction.save();
