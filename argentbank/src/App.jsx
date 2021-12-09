@@ -14,8 +14,8 @@ export default function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/login" component={SignIn} />
-        <PrivateRoute path="/profile" component={Profile} />{' '}
+        <Route exact path={['/login', '/']} component={SignIn} />
+        <PrivateRoute exact path="/profile" component={Profile} />{' '}
         <Route
           path="*"
           render={() => (
