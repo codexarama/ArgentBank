@@ -97,8 +97,8 @@ l'API de ArgentBank fournit des données pour 2 utilisateurs
 
 ### Step 1 : Installing and launching back-end
 
-- [ ] Clone the back-end repository: `git clone https://github.com/codexarama/AmandineArias_13_02112021.git`
-- [ ] Move to this folder: `cd AmandineArias_13_02112021`
+- [ ] Clone the back-end repository: `git clone https://github.com/codexarama/ArgentBank.git`
+- [ ] Move to this folder: `cd ArgentBank`
 - [ ] Install dependencies: `npm install`
 - [ ] Launch back-end on default port: `npm run dev:server`
 - [ ] Create minimal database: `npm run populate-db`
