@@ -82,7 +82,6 @@ l'API de ArgentBank fournit des données pour 2 utilisateurs
 * [Git](https://git-scm.com/) to clone repositories
 * [nodeJS](https://nodejs.org/fr/) to run commands
 * [npm](https://www.npmjs.com/) to run application
-* [Yarn](https://yarnpkg.com/) to run back-end
 
 ### Dependances
 
