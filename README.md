@@ -15,8 +15,8 @@ Utilisez une API pour une application bancaire
 
 - [x] Implémenter un gestionnaire d'état dans une application React `REDUX`
 - [x] Interagir avec une API `AXIOS | MONGOdb`
-- [x] S'authentifier à une API sécurisée `JWT token`
-- [x] Modéliser une API `SWAGGER`
+- [x] Implémenter un système d'authentification à une API sécurisée `JWT token`
+- [x] Modéliser une API `SWAGGER | NODEjs`
 
 ## Ressources fournies
 
