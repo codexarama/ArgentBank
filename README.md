@@ -53,8 +53,8 @@ Utilisez une API pour une application bancaire
 
 ### Etape 1 : Lancement du back-end
 
-- [ ] Cloner le repo du back-end : `git clone https://github.com/codexarama/AmandineArias_13_02112021.git`
-- [ ] Aller dans ce dossier : `cd AmandineArias_13_02112021`
+- [ ] Cloner le repo du back-end : `git clone https://github.com/codexarama/ArgentBank.git`
+- [ ] Aller dans ce dossier : `cd ArgentBank`
 - [ ] Installer ses dépendances : `npm install`
 - [ ] Le lancer sur le port par défaut : `npm run dev:server`
 - [ ] Créer une base de donnée minimale : `npm run populate-db`
