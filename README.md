@@ -2,6 +2,10 @@
 
     Projet fictif de formation n°10/11 | OpenClassrooms
 
+**Personnal bank account manager**
+
+<kbd>![dashboard](./ArgentBank_2.png)</kbd>
+
 > PROBLEMATIQUE
 
 Utilisez une API pour une application bancaire
